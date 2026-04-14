@@ -93,3 +93,13 @@ h1, h2, h3, h4, h5, h6 {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Responsive: force inline grids to stack on mobile */
+@media (max-width: 768px) {
+  div[style] {
+    grid-template-columns: unset;
+  }
+  .card {
+    padding: 16px;
+  }
+}

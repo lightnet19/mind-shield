@@ -1,17 +1,38 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import styles from './layout.module.css';
-import { Home, FileText, Calendar, Video, BookHeart, LogOut, Info } from 'lucide-react';
+import { Home, FileText, Calendar, Video, BookHeart, LogOut, Info, Menu, X } from 'lucide-react';
 
 export default function KonseliLayout({ children }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className={styles.layout}>
-      <aside className={styles.sidebar}>
+      {/* Mobile Topbar */}
+      <div className={styles.topbar}>
+        <button className={styles.hamburger} onClick={() => setOpen(true)} aria-label="Buka menu">
+          <Menu size={24} />
+        </button>
+        <span className={styles.topbarBrand}>Mind Shield</span>
+      </div>
+
+      {/* Overlay */}
+      {open && <div className={`${styles.overlay} ${styles.overlayVisible}`} onClick={() => setOpen(false)} />}
+
+      {/* Sidebar */}
+      <aside className={`${styles.sidebar} ${open ? styles.sidebarOpen : ''}`}>
         <div className={styles.sidebarHeader}>
           <div className={styles.logo}>MS</div>
           <span className={styles.brandName}>Mind Shield</span>
+          <button className={styles.hamburger} onClick={() => setOpen(false)}
+            style={{ marginLeft: 'auto', display: 'flex' }} aria-label="Tutup menu">
+            <X size={20} />
+          </button>
         </div>
-        
-        <nav className={styles.nav}>
+
+        <nav className={styles.nav} onClick={() => setOpen(false)}>
           <Link href="/konseli/dashboard" className={styles.navItem}>
             <Home size={20} /> Dashboard
           </Link>
@@ -31,14 +52,14 @@ export default function KonseliLayout({ children }) {
             <BookHeart size={20} /> Jurnal Perkembangan
           </Link>
         </nav>
-        
+
         <div className={styles.sidebarFooter}>
           <Link href="/login" className={styles.logoutBtn}>
             <LogOut size={20} /> Keluar
           </Link>
         </div>
       </aside>
-      
+
       <main className={styles.main}>
         {children}
       </main>
