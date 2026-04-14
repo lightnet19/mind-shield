@@ -73,7 +73,7 @@
 }
 
 .roleSelect {
-  margin-bottom: 30px;
+  margin-bottom: 12px;
 }
 
 .fullWidth {
@@ -99,4 +99,31 @@
 
 .link:hover {
   text-decoration: underline;
+}
+
+.roleBadge {
+  margin-top: 4px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.roleBadge[data-role="konseli"] {
+  background-color: rgba(6, 214, 160, 0.1);
+  color: #059669;
+  border: 1px solid rgba(6, 214, 160, 0.3);
+}
+
+.roleBadge[data-role="konselor"] {
+  background-color: rgba(7, 104, 159, 0.08);
+  color: var(--secondary);
+  border: 1px solid rgba(7, 104, 159, 0.2);
+}
+
+.roleBadge[data-role="admin"] {
+  background-color: rgba(43, 45, 66, 0.07);
+  color: #2b2d42;
+  border: 1px solid rgba(43, 45, 66, 0.15);
 }
