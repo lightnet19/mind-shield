@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
           zIndex: 9999,
           boxShadow: '-2px -2px 10px rgba(0,0,0,0.03)'
         }}>
-          Aplikasi ini buatan <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer" style={{color: 'var(--primary)', fontWeight: 600, textDecoration: 'none'}}>Alfajri</a>
+          Aplikasi ini buatan <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer" style={{color: 'var(--primary)', fontWeight: 600, textDecoration: 'none'}}>alfajri</a>
         </div>
       </body>
     </html>
