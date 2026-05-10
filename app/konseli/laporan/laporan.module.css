@@ -1,0 +1,169 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.infoBox {
+  display: flex;
+  gap: 16px;
+  background: rgba(10, 77, 160, 0.05);
+  border-left: 4px solid var(--primary);
+  padding: 20px;
+  border-radius: var(--radius-md);
+  margin-bottom: 32px;
+  align-items: center;
+}
+
+.infoIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.infoBox p {
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.laporanList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.laporanCard {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.laporanCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dateBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.topik {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(14, 159, 110, 0.1);
+  color: #0e9f6e;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cardBody {
+  padding: 24px;
+}
+
+.infoRow {
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.label {
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.value {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.contentSection {
+  margin-bottom: 20px;
+}
+
+.contentSection:last-child {
+  margin-bottom: 0;
+}
+
+.contentSection h4 {
+  color: var(--text-dark);
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.contentSection p {
+  color: var(--text-main);
+  line-height: 1.6;
+  background: var(--background);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  margin: 0;
+}
+
+.cardFooter {
+  padding: 16px 24px;
+  background: #f8fafc;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 20px;
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--border);
+  text-align: center;
+}
+
+.emptyState h3 {
+  margin: 16px 0 8px;
+  color: var(--text-dark);
+}
+
+.emptyState p {
+  color: var(--text-muted);
+  max-width: 400px;
+}
+
+@media (max-width: 640px) {
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
