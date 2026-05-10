@@ -1,101 +1,78 @@
-import Link from 'next/link';
+'use client';
 import styles from './dashboard.module.css';
-import { ShieldCheck, Activity, CalendarClock, PenTool } from 'lucide-react';
+import { ShieldCheck, Activity, CalendarClock, Video, FileText, Info, AlertTriangle, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
+
+const statusCards = [
+  { label: 'Status Layanan', value: 'Aktif', icon: ShieldCheck, color: '#0e9f6e', bg: 'rgba(14,159,110,0.1)', href: null },
+  { label: 'Sesi Berikutnya', value: 'Senin, 13 Mei · 10:00', icon: CalendarClock, color: '#1a56db', bg: 'rgba(26,86,219,0.1)', href: '/konseli/jadwal' },
+  { label: 'Screening', value: 'Sudah Diisi', icon: Activity, color: '#f59e0b', bg: 'rgba(245,158,11,0.1)', href: '/konseli/screening' },
+  { label: 'Sesi Online', value: 'Tersedia', icon: Video, color: '#8b5cf6', bg: 'rgba(139,92,246,0.1)', href: '/konseli/sesi' },
+];
+
+const menuItems = [
+  { href: '/konseli/panduan', label: 'Panduan & Informed Consent', icon: Info, desc: 'Baca panduan dan lengkapi persetujuan layanan', done: true },
+  { href: '/konseli/screening', label: 'Screening CBT', icon: FileText, desc: 'Isi kuesioner ISAS dan Core Beliefs', done: true },
+  { href: '/konseli/jadwal', label: 'Jadwal Konseling', icon: CalendarClock, desc: 'Lihat dan ajukan jadwal sesi bersama konselor', done: false },
+  { href: '/konseli/sesi', label: 'Sesi Online', icon: Video, desc: 'Masuk ke ruang konseling video', done: false },
+];
 
 export default function KonseliDashboard() {
   return (
-    <div className="fade-in">
-      <header className={styles.header}>
+    <div className={styles.page}>
+      <div className={styles.header}>
         <div>
-          <h1>Halo, Sarah</h1>
-          <p className="text-muted">Selamat datang di Ruang Aman Anda hari ini.</p>
+          <h1 className={styles.title}>Dashboard Konseli</h1>
+          <p className={styles.subtitle}>Selamat datang! Berikut perkembangan layanan Anda.</p>
         </div>
-        <div className={styles.dateBadge}>
-          14 April 2026
+        <div className={styles.safetyBtn}>
+          <AlertTriangle size={16}/> Panduan Darurat
         </div>
-      </header>
+      </div>
 
-      <section className={styles.statsGrid}>
-        <div className="card">
-          <div className={styles.statIcon} style={{backgroundColor: 'rgba(6, 214, 160, 0.1)', color: 'var(--success)'}}>
-            <ShieldCheck size={24} />
-          </div>
-          <h3>Status Screening</h3>
-          <p>Selesai - Risiko Terpantau</p>
-        </div>
-        <div className="card">
-          <div className={styles.statIcon} style={{backgroundColor: 'rgba(144, 194, 231, 0.2)', color: 'var(--secondary)'}}>
-            <Activity size={24} />
-          </div>
-          <h3>Sesi CBT Ke</h3>
-          <p>Sesi 2 dari 6</p>
-        </div>
-        <div className="card">
-          <div className={styles.statIcon} style={{backgroundColor: 'rgba(239, 71, 111, 0.1)', color: 'var(--alert)'}}>
-            <PenTool size={24} />
-          </div>
-          <h3>Jurnal Mingguan</h3>
-          <p>Belum Diisi</p>
-        </div>
-      </section>
-
-      <section className={styles.mainContent}>
-        <div className={styles.journeyCol}>
-          <h2 className={styles.sectionTitle}>Perjalanan Pemulihan CBT</h2>
-          <div className="card">
-            <ul className={styles.timeline}>
-              <li className={`${styles.timelineItem} ${styles.completed}`}>
-                <div className={styles.timelineDot}></div>
-                <div className={styles.timelineContent}>
-                  <h4>Persetujuan & Informed Consent</h4>
-                  <p>Disetujui pada 10 Apr</p>
-                </div>
-              </li>
-              <li className={`${styles.timelineItem} ${styles.completed}`}>
-                <div className={styles.timelineDot}></div>
-                <div className={styles.timelineContent}>
-                  <h4>Screening Awal Self-Injury</h4>
-                  <p>Risiko Menengah - Ditugaskan ke Konselor Budi</p>
-                </div>
-              </li>
-              <li className={`${styles.timelineItem} ${styles.active}`}>
-                <div className={styles.timelineDot}></div>
-                <div className={styles.timelineContent}>
-                  <h4>Identifikasi Automatic Thoughts</h4>
-                  <p>Langkah saat ini: Mengenali pola pikir negatif otomatis.</p>
-                  <Link href="/konseli/screening" className="btn-primary" style={{display: 'inline-block', marginTop: '10px'}}>
-                    Lanjutkan Lembar Kerja
-                  </Link>
-                </div>
-              </li>
-              <li className={styles.timelineItem}>
-                <div className={styles.timelineDot}></div>
-                <div className={styles.timelineContent}>
-                  <h4>Identifikasi Core Belief</h4>
-                  <p>Menyelami keyakinan dasar.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className={styles.asideCol}>
-          <h2 className={styles.sectionTitle}>Sesi Terdekat</h2>
-          <div className="card">
-            <div className={styles.upcomingSession}>
-              <CalendarClock size={32} color="var(--primary)" />
-              <div className={styles.sessionInfo}>
-                <h4>Restrukturisasi Kognitif</h4>
-                <p>Bersama Konselor Budi H.</p>
-                <div className={styles.sessionTime}>16 Apr 2026, 14:00 WIB</div>
-              </div>
+      {/* Status Cards */}
+      <div className={styles.statsGrid}>
+        {statusCards.map((s, i) => (
+          <div key={i} className={styles.statCard} style={{ borderTop: `3px solid ${s.color}` }}>
+            <div className={styles.statIcon} style={{ background: s.bg, color: s.color }}>
+              <s.icon size={20}/>
             </div>
-            <Link href="/konseli/sesi" className={`btn-primary ${styles.fullWidthBtn}`} style={{marginTop: '20px', textAlign: 'center'}}>
-              Masuk Ruang Sesi
-            </Link>
+            <div>
+              <div className={styles.statLabel}>{s.label}</div>
+              <div className={styles.statValue}>{s.value}</div>
+            </div>
           </div>
+        ))}
+      </div>
+
+      {/* Progress Menu */}
+      <div className={styles.sectionTitle}>Alur Layanan</div>
+      <div className={styles.menuList}>
+        {menuItems.map((m, i) => (
+          <Link key={i} href={m.href} className={styles.menuCard}>
+            <div className={styles.stepNum} style={{ background: m.done ? '#0e9f6e' : '#e5e7eb', color: m.done ? '#fff' : '#9ca3af' }}>
+              {m.done ? <CheckCircle size={18}/> : i + 1}
+            </div>
+            <div className={styles.menuIcon} ><m.icon size={20}/></div>
+            <div className={styles.menuInfo}>
+              <div className={styles.menuLabel}>{m.label}</div>
+              <div className={styles.menuDesc}>{m.desc}</div>
+            </div>
+            <span className={`${styles.menuStatus} ${m.done ? styles.menuDone : styles.menuPending}`}>
+              {m.done ? 'Selesai' : 'Belum'}
+            </span>
+          </Link>
+        ))}
+      </div>
+
+      {/* Info Box */}
+      <div className={styles.infoBox}>
+        <ShieldCheck size={20} className={styles.infoIcon}/>
+        <div>
+          <div className={styles.infoTitle}>Data Anda Terlindungi</div>
+          <div className={styles.infoText}>Semua informasi yang Anda berikan bersifat rahasia dan hanya dapat diakses oleh konselor yang ditugaskan.</div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
