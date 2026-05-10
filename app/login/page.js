@@ -1,91 +1,102 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import styles from './login.module.css';
-import logoImg from '../logo-mindshield-transparent.png';
+import { Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
 
-export default function Login() {
+export default function LoginPage() {
   const router = useRouter();
-  const [role, setRole] = useState('konseli');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
     setLoading(true);
-    // Simulasi loading sebentar lalu redirect berdasarkan role
+
+    // Simulasi Login (Akan diganti dengan auth nyata)
     setTimeout(() => {
-      if (role === 'konseli') {
-        router.push('/konseli/dashboard');
-      } else if (role === 'konselor') {
-        router.push('/konselor/dashboard');
-      } else if (role === 'admin') {
+      if (email === 'admin@mindshield.id') {
         router.push('/admin/dashboard');
+      } else if (email === 'konselor@mindshield.id') {
+        router.push('/konselor/dashboard');
+      } else {
+        router.push('/konseli/dashboard');
       }
-    }, 800);
+      setLoading(false);
+    }, 1500);
   };
 
   return (
-    <div className={styles.container}>
-      <div className={`card fade-in ${styles.loginCard}`}>
-        <div className={styles.header}>
-          <div className={styles.logoContainer} style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
-            <Image 
-              src={logoImg} 
-              alt="Mind Shield Logo" 
-              width={80} 
-              height={80} 
-              style={{ objectFit: 'contain' }}
-            />
-          </div>
-          <h2>Selamat Datang Kembali</h2>
-          <p className={styles.textMuted}>Masuk ke portal perlindungan mental Anda</p>
+    <div className={styles.loginContainer}>
+      <div className={styles.loginCard}>
+        <div className={styles.loginHeader}>
+          <Link href="/">
+            <Image src="/logo-mindshield-transparent.png" alt="Logo" width={64} height={64} className={styles.logo} />
+          </Link>
+          <h1>Selamat Datang</h1>
+          <p>Masuk untuk mengakses ruang aman Anda</p>
         </div>
-        
-        <form onSubmit={handleLogin}>
-          <div className={styles.formGroup}>
-            <label>Email</label>
-            <input type="email" placeholder="nama@email.com" className={styles.input} />
-          </div>
-          <div className={styles.formGroup}>
-            <label>Kata Sandi</label>
-            <input type="password" placeholder="••••••••" className={styles.input} />
-          </div>
-          
-          <div className={styles.roleSelect}>
-            <label>Masuk Sebagai:</label>
-            <select
-              className={styles.input}
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-            >
-              <option value="konseli">👤 Konseli (Klien)</option>
-              <option value="konselor">👨‍⚕️ Konselor</option>
-              <option value="admin">🛡️ Admin Website</option>
-            </select>
+
+        <form className={styles.loginForm} onSubmit={handleLogin}>
+          <div className={styles.inputGroup}>
+            <label htmlFor="email">Email</label>
+            <div className={styles.inputWrapper}>
+              <Mail className={styles.inputIcon} size={20} />
+              <input
+                type="email"
+                id="email"
+                placeholder="nama@sekolah.sch.id"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
           </div>
 
-          {/* Badge preview role yang dipilih */}
-          <div className={styles.roleBadge} data-role={role}>
-            {role === 'konseli' && 'ℹ️ Anda akan masuk sebagai Konseli (Klien CBT)'}
-            {role === 'konselor' && 'ℹ️ Anda akan masuk sebagai Konselor / Psikolog'}
-            {role === 'admin' && 'ℹ️ Anda akan masuk sebagai Admin Sistem'}
+          <div className={styles.inputGroup}>
+            <label htmlFor="password">Kata Sandi</label>
+            <div className={styles.inputWrapper}>
+              <Lock className={styles.inputIcon} size={20} />
+              <input
+                type={showPassword ? 'text' : 'password'}
+                id="password"
+                placeholder="••••••••"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button
+                type="button"
+                className={styles.passwordToggle}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
           </div>
-          
-          <button
-            type="submit"
-            className={`btn-primary ${styles.fullWidth}`}
-            disabled={loading}
-            style={{ marginTop: '12px', padding: '14px', fontSize: '1rem', opacity: loading ? 0.7 : 1 }}
-          >
-            {loading ? 'Masuk...' : 'Masuk ke Dashboard ➡️'}
+
+          <div className={styles.forgotPassword}>
+            <Link href="/forgot-password">Lupa kata sandi?</Link>
+          </div>
+
+          <button type="submit" className={styles.loginButton} disabled={loading}>
+            {loading ? 'Memproses...' : 'Masuk Sekarang'}
+            {!loading && <ArrowRight size={20} />}
           </button>
         </form>
-        
-        <div className={styles.footer}>
-          <p>Belum punya akun? <a href="/register" className={styles.link}>Daftar sebagai Konseli</a></p>
+
+        <div className={styles.loginFooter}>
+          <p>Belum punya akun? <Link href="/register">Daftar di sini</Link></p>
         </div>
+      </div>
+      
+      <div className={styles.creditText}>
+        Made with Love ❤️ by <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer">alfajri</a>
       </div>
     </div>
   );

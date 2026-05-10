@@ -4,8 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../konseli/layout.module.css';
-import logoImg from '../../logo-mindshield-transparent.png';
-import { Home, Shield, Users, Database, Activity, LogOut, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Home, Users, Settings, FileText, Database, LogOut, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function AdminLayout({ children }) {
   const [open, setOpen] = useState(false);
@@ -18,8 +17,8 @@ export default function AdminLayout({ children }) {
           <Menu size={24} />
         </button>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Image src={logoImg} alt="Logo" width={24} height={24} style={{ objectFit: 'contain' }} />
-          <span className={styles.topbarBrand}>Admin System</span>
+          <Image src="/logo-mindshield-transparent.png" alt="Logo" width={24} height={24} style={{ objectFit: 'contain' }} />
+          <span className={styles.topbarBrand}>Mind Shield Admin</span>
         </div>
       </div>
 
@@ -28,13 +27,13 @@ export default function AdminLayout({ children }) {
       <aside className={`${styles.sidebar} ${open ? styles.sidebarOpen : ''} ${collapsed ? styles.sidebarCollapsed : ''}`}>
         <div className={styles.sidebarHeader}>
           <div className={styles.logo} style={{ padding: 0, background: 'transparent' }}>
-            <Image src={logoImg} alt="Mind Shield Logo" width={36} height={36} style={{ objectFit: 'contain' }} />
+            <Image src="/logo-mindshield-transparent.png" alt="Mind Shield Logo" width={36} height={36} style={{ objectFit: 'contain' }} />
           </div>
-          <span className={styles.brandName} style={{ color: '#2b2d42' }}>Admin System</span>
-          <button
-            className={styles.collapseBtn}
+          <span className={styles.brandName}>Mind Shield Admin</span>
+          <button 
+            className={styles.collapseBtn} 
             onClick={() => setCollapsed(!collapsed)}
-            aria-label={collapsed ? 'Perlebar sidebar' : 'Lipat sidebar'}
+            aria-label={collapsed ? "Perlebar sidebar" : "Lipat sidebar"}
           >
             {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
           </button>
@@ -44,17 +43,17 @@ export default function AdminLayout({ children }) {
           <Link href="/admin/dashboard" className={styles.navItem} title="Dashboard Admin">
             <Home size={20} /><span className={styles.navLabel}>Dashboard Admin</span>
           </Link>
-          <Link href="/admin/users" className={styles.navItem} title="Kelola Akun & Verifikasi">
-            <Users size={20} /><span className={styles.navLabel}>Kelola Akun & Verifikasi</span>
+          <Link href="/admin/users" className={styles.navItem} title="Manajemen Pengguna">
+            <Users size={20} /><span className={styles.navLabel}>Manajemen Pengguna</span>
           </Link>
-          <Link href="/admin/jadwal" className={styles.navItem} title="Ketersediaan Sistem">
-            <Activity size={20} /><span className={styles.navLabel}>Ketersediaan Sistem</span>
+          <Link href="/admin/konseling" className={styles.navItem} title="Data Konseling">
+            <FileText size={20} /><span className={styles.navLabel}>Data Konseling</span>
           </Link>
-          <Link href="/admin/keamanan" className={styles.navItem} title="Privasi & Keamanan">
-            <Shield size={20} /><span className={styles.navLabel}>Privasi & Keamanan</span>
+          <Link href="/admin/database" className={styles.navItem} title="Cadangan Data">
+            <Database size={20} /><span className={styles.navLabel}>Cadangan Data</span>
           </Link>
-          <Link href="/admin/database" className={styles.navItem} title="Backup Data">
-            <Database size={20} /><span className={styles.navLabel}>Backup Data</span>
+          <Link href="/admin/pengaturan" className={styles.navItem} title="Pengaturan Sistem">
+            <Settings size={20} /><span className={styles.navLabel}>Pengaturan Sistem</span>
           </Link>
         </nav>
 
@@ -63,8 +62,8 @@ export default function AdminLayout({ children }) {
             Made with Love ❤️ by{' '}
             <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer">alfajri</a>
           </span>
-          <Link href="/login" className={styles.logoutBtn} title="Keluar (Admin)">
-            <LogOut size={20} /><span className={styles.logoutLabel}>Keluar (Admin)</span>
+          <Link href="/login" className={styles.logoutBtn} title="Keluar">
+            <LogOut size={20} /><span className={styles.logoutLabel}>Keluar</span>
           </Link>
         </div>
       </aside>

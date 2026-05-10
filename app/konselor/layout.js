@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../konseli/layout.module.css';
-import logoImg from '../../logo-mindshield-transparent.png';
 import { Home, Users, FileBarChart, Video, CalendarCheck, LogOut, Menu, ClipboardList, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function KonselorLayout({ children }) {
@@ -18,7 +17,7 @@ export default function KonselorLayout({ children }) {
           <Menu size={24} />
         </button>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Image src={logoImg} alt="Logo" width={24} height={24} style={{ objectFit: 'contain' }} />
+          <Image src="/logo-mindshield-transparent.png" alt="Logo" width={24} height={24} style={{ objectFit: 'contain' }} />
           <span className={styles.topbarBrand}>Mind Shield Konselor</span>
         </div>
       </div>
@@ -28,7 +27,7 @@ export default function KonselorLayout({ children }) {
       <aside className={`${styles.sidebar} ${open ? styles.sidebarOpen : ''} ${collapsed ? styles.sidebarCollapsed : ''}`}>
         <div className={styles.sidebarHeader}>
           <div className={styles.logo} style={{ padding: 0, background: 'transparent' }}>
-            <Image src={logoImg} alt="Mind Shield Logo" width={36} height={36} style={{ objectFit: 'contain' }} />
+            <Image src="/logo-mindshield-transparent.png" alt="Mind Shield Logo" width={36} height={36} style={{ objectFit: 'contain' }} />
           </div>
           <span className={styles.brandName}>Mind Shield Konselor</span>
           <button
