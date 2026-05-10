@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Shield } from 'lucide-react';
+import { Shield, ArrowUp } from 'lucide-react';
 import styles from './page.module.css';
 import logoImg from '../logo-mindshield-transparent.png';
 import heroImg from '../hero_image.png';
@@ -113,6 +113,24 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <div className={styles.footerLogo}>
+            <Image src={logoImg} alt="Mind Shield Logo" width={32} height={32} />
+            <span className={styles.footerBrand}>Mind Shield</span>
+          </div>
+          <p className={styles.footerText}>
+            Platform tele-counseling yang aman dan terpercaya, membantu Anda mengenali dan mengatasi pikiran negatif.
+          </p>
+          
+          <Link href="/" className={styles.backToTop}>
+            <ArrowUp size={20} />
+            <span>Kembali ke Atas</span>
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 }
