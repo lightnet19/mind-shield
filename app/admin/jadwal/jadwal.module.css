@@ -1,0 +1,19 @@
+.page{padding:2rem;max-width:1000px}
+.title{font-size:1.75rem;font-weight:700;color:#1f2937;margin:0 0 .25rem}
+.subtitle{color:#6b7280;margin:0 0 2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
+.card{background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid #f3f4f6;transition:.2s}
+.cardInactive{opacity:.6}
+.cardHeader{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#1a56db,#0e9f6e);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.name{font-size:.9rem;font-weight:600;color:#1f2937}
+.day{font-size:.78rem;color:#9ca3af;display:flex;align-items:center;gap:3px;margin-top:2px}
+.badge{margin-left:auto;padding:3px 10px;border-radius:9999px;font-size:.75rem;font-weight:600}
+.badgeOn{background:rgba(14,159,110,.1);color:#0e9f6e}
+.badgeOff{background:rgba(107,114,128,.1);color:#6b7280}
+.time{display:flex;align-items:center;gap:6px;color:#6b7280;font-size:.88rem;margin-bottom:1rem}
+.btn{width:100%;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px;border-radius:10px;font-size:.85rem;font-weight:600;border:none;cursor:pointer;transition:.2s}
+.btnOff{background:rgba(239,68,68,.08);color:#ef4444}
+.btnOff:hover{background:#ef4444;color:#fff}
+.btnOn{background:rgba(14,159,110,.08);color:#0e9f6e}
+.btnOn:hover{background:#0e9f6e;color:#fff}
