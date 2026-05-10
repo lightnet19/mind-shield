@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './layout.module.css';
 import logoImg from '../../logo-mindshield-transparent.png';
-import { Home, FileText, Calendar, Video, BookHeart, LogOut, Info, Menu, X, PenTool, ClipboardList, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Home, FileText, Calendar, Video, LogOut, Info, Menu, PenTool, ClipboardList, ChevronLeft, ChevronRight } from 'lucide-react';
 import Chatbot from '../components/Chatbot/Chatbot';
 
 export default function KonseliLayout({ children }) {
@@ -45,31 +45,35 @@ export default function KonseliLayout({ children }) {
         </div>
 
         <nav className={styles.nav} onClick={() => setOpen(false)}>
-          <Link href="/konseli/dashboard" className={styles.navItem} title={collapsed ? 'Dashboard' : ''}>
+          <Link href="/konseli/dashboard" className={styles.navItem} title="Dashboard">
             <Home size={20} /><span className={styles.navLabel}>Dashboard</span>
           </Link>
-          <Link href="/konseli/panduan" className={styles.navItem} title={collapsed ? 'Panduan & Consent' : ''}>
+          <Link href="/konseli/panduan" className={styles.navItem} title="Panduan & Consent">
             <Info size={20} /><span className={styles.navLabel}>Panduan & Consent</span>
           </Link>
-          <Link href="/konseli/screening" className={styles.navItem} title={collapsed ? 'Screening CBT' : ''}>
+          <Link href="/konseli/screening" className={styles.navItem} title="Screening CBT">
             <FileText size={20} /><span className={styles.navLabel}>Screening CBT</span>
           </Link>
-          <Link href="/konseli/jadwal" className={styles.navItem} title={collapsed ? 'Jadwal Konseling' : ''}>
+          <Link href="/konseli/jadwal" className={styles.navItem} title="Jadwal Konseling">
             <Calendar size={20} /><span className={styles.navLabel}>Jadwal Konseling</span>
           </Link>
-          <Link href="/konseli/sesi" className={styles.navItem} title={collapsed ? 'Sesi Online' : ''}>
+          <Link href="/konseli/sesi" className={styles.navItem} title="Sesi Online">
             <Video size={20} /><span className={styles.navLabel}>Sesi Online</span>
           </Link>
-          <Link href="/konseli/penugasan" className={styles.navItem} title={collapsed ? 'Penugasan Terapeutik' : ''}>
+          <Link href="/konseli/penugasan" className={styles.navItem} title="Penugasan Terapeutik">
             <PenTool size={20} /><span className={styles.navLabel}>Penugasan Terapeutik</span>
           </Link>
-          <Link href="/konseli/laporan" className={styles.navItem} title={collapsed ? 'Laporan Konseling' : ''}>
+          <Link href="/konseli/laporan" className={styles.navItem} title="Laporan Konseling">
             <ClipboardList size={20} /><span className={styles.navLabel}>Laporan Konseling</span>
           </Link>
         </nav>
 
         <div className={styles.sidebarFooter}>
-          <Link href="/login" className={styles.logoutBtn} title={collapsed ? 'Keluar' : ''}>
+          <span className={styles.creditText}>
+            Made with Love ❤️ by{' '}
+            <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer">alfajri</a>
+          </span>
+          <Link href="/login" className={styles.logoutBtn} title="Keluar">
             <LogOut size={20} /><span className={styles.logoutLabel}>Keluar</span>
           </Link>
         </div>
