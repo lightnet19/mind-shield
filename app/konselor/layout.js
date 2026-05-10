@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../konseli/layout.module.css';
 import logoImg from '../../logo-mindshield-transparent.png';
-import { Home, Users, FileBarChart, Video, CalendarCheck, LogOut, Menu, X } from 'lucide-react';
+import { Home, Users, FileBarChart, Video, CalendarCheck, LogOut, Menu, X, ClipboardList } from 'lucide-react';
 
 export default function KonselorLayout({ children }) {
   const [open, setOpen] = useState(false);
@@ -48,6 +48,9 @@ export default function KonselorLayout({ children }) {
           </Link>
           <Link href="/konselor/sesi" className={styles.navItem}>
             <Video size={20} /> Ruang Konseling
+          </Link>
+          <Link href="/konselor/laporan" className={styles.navItem}>
+            <ClipboardList size={20} /> Laporan Konseling
           </Link>
         </nav>
 
