@@ -1,0 +1,27 @@
+.page{padding:2rem;max-width:900px}
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.title{font-size:1.75rem;font-weight:700;color:#1f2937;margin:0 0 .25rem}
+.subtitle{color:#6b7280;font-size:.95rem;margin:0}
+.countChip{background:#f3f4f6;color:#374151;padding:6px 14px;border-radius:9999px;font-size:.85rem;font-weight:600}
+.searchBox{position:relative;margin-bottom:1.5rem}
+.searchIcon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#9ca3af}
+.searchInput{width:100%;padding:11px 14px 11px 40px;border:1px solid #e5e7eb;border-radius:12px;font-size:.9rem;outline:none;box-sizing:border-box}
+.searchInput:focus{border-color:#1a56db;box-shadow:0 0 0 3px rgba(26,86,219,.08)}
+.list{display:flex;flex-direction:column;gap:.75rem}
+.card{display:flex;align-items:center;gap:1rem;background:#fff;border-radius:14px;padding:1rem 1.25rem;box-shadow:0 2px 8px rgba(0,0,0,.04);border:1px solid #f3f4f6;cursor:pointer;transition:all .2s;flex-wrap:wrap}
+.card:hover{border-color:#d1ddf7;transform:translateX(4px)}
+.cardLeft{display:flex;align-items:center;gap:.875rem;flex:1;min-width:200px}
+.avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#1a56db,#0e9f6e);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;flex-shrink:0}
+.info{display:flex;flex-direction:column}
+.name{font-size:.95rem;font-weight:600;color:#1f2937}
+.meta{font-size:.78rem;color:#9ca3af;margin-top:2px}
+.cardMid{display:flex;flex-direction:column;gap:3px;min-width:140px}
+.stat{display:flex;align-items:center;gap:5px;font-size:.8rem;color:#6b7280}
+.cardRight{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+.riskBadge{padding:3px 10px;border-radius:9999px;font-size:.75rem;font-weight:700}
+.statusBadge{padding:2px 9px;border-radius:9999px;font-size:.72rem;font-weight:600}
+.s_aktif{background:rgba(14,159,110,.1);color:#0e9f6e}
+.s_baru{background:rgba(26,86,219,.1);color:#1a56db}
+.s_selesai{background:rgba(107,114,128,.1);color:#6b7280}
+.arrow{color:#d1d5db;flex-shrink:0}
+.empty{text-align:center;color:#9ca3af;padding:3rem;background:#fff;border-radius:14px}
