@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from '../konseli/layout.module.css';
+import logoImg from '../../logo-mindshield-transparent.png';
 import { Home, Users, FileBarChart, Video, CalendarCheck, LogOut, Menu, X } from 'lucide-react';
 
 export default function KonselorLayout({ children }) {
@@ -21,7 +23,9 @@ export default function KonselorLayout({ children }) {
 
       <aside className={`${styles.sidebar} ${open ? styles.sidebarOpen : ''}`}>
         <div className={styles.sidebarHeader}>
-          <div className={styles.logo} style={{ backgroundColor: 'var(--secondary)' }}>MS</div>
+          <div className={styles.logo} style={{ padding: 0, background: 'transparent' }}>
+            <Image src={logoImg} alt="Mind Shield Logo" width={36} height={36} style={{ objectFit: 'contain' }} />
+          </div>
           <span className={styles.brandName} style={{ color: 'var(--text-main)' }}>Mind Shield Konselor</span>
           <button className={styles.hamburger} onClick={() => setOpen(false)}
             style={{ marginLeft: 'auto', display: 'flex' }} aria-label="Tutup menu">
