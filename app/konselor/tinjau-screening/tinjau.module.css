@@ -1,0 +1,28 @@
+.page{padding:2rem;max-width:900px}
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.title{font-size:1.75rem;font-weight:700;color:#1f2937;margin:0 0 .25rem}
+.subtitle{color:#6b7280;font-size:.95rem;margin:0}
+.urgentChip{display:flex;align-items:center;gap:6px;background:rgba(239,68,68,.1);color:#ef4444;padding:6px 14px;border-radius:9999px;font-size:.85rem;font-weight:600}
+.list{display:flex;flex-direction:column;gap:1rem}
+.card{background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid #f3f4f6;overflow:hidden;transition:.2s}
+.cardUrgent{border-left:4px solid #ef4444}
+.cardTop{display:flex;align-items:center;gap:.875rem;padding:1.25rem 1.5rem;cursor:pointer}
+.cardTop:hover{background:#fafafa}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1a56db,#0e9f6e);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.info{flex:1;display:flex;flex-direction:column}
+.name{font-size:.95rem;font-weight:600;color:#1f2937}
+.date{font-size:.78rem;color:#9ca3af}
+.riskBadge{padding:4px 12px;border-radius:9999px;font-size:.78rem;font-weight:700;flex-shrink:0}
+.chevron{color:#9ca3af;flex-shrink:0}
+.detail{padding:0 1.5rem 1.5rem;border-top:1px solid #f3f4f6}
+.detailGrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-top:1.25rem;margin-bottom:1rem}
+.detailBox{background:#f9fafb;border-radius:12px;padding:1rem}
+.detailLabel{font-size:.75rem;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.375rem}
+.detailValue{font-size:1.5rem;font-weight:700;color:#1f2937}
+.detailUnit{font-size:.8rem;color:#6b7280;font-weight:400}
+.urgentNote{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:.875rem 1rem;font-size:.875rem;color:#b91c1c;margin-bottom:1rem}
+.detailActions{display:flex;gap:.75rem;flex-wrap:wrap}
+.btnPrimary{display:inline-flex;align-items:center;gap:6px;background:#1a56db;color:#fff;padding:9px 18px;border-radius:10px;font-weight:600;font-size:.875rem;border:none;cursor:pointer;transition:.2s}
+.btnPrimary:hover{background:#1e40af}
+.btnSecondary{padding:9px 18px;border-radius:10px;font-weight:600;font-size:.875rem;border:1px solid #e5e7eb;background:#fff;cursor:pointer;color:#374151;transition:.2s}
+.btnSecondary:hover{border-color:#1a56db;color:#1a56db}
