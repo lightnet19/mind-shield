@@ -1,9 +1,9 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Mind Shield — Konseling Online Berbasis CBT',
+  title: 'Mind Shield - Konseling Online Berbasis CBT',
   description: 'Website Self Defense Berbasis Strategi Cognitive Behavioral Therapy (CBT) untuk Mengurangi Tindakan Self-Injury. Ruang aman digital untuk membantu siswa mengenali pikiran negatif, mengelola emosi, dan memperoleh dukungan konseling secara aman.',
-  icons: { icon: '/logo-mindshield.png' },
+  icons: { icon: '/logo-mindshield-transparent.png' },
 };
 
 export default function RootLayout({ children }) {
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <div style={{
           position: 'fixed',
           bottom: '20px',
-          right: '20px',
+          left: '20px',
           backgroundColor: 'rgba(255, 255, 255, 0.9)',
           padding: '8px 16px',
           borderRadius: '9999px',
