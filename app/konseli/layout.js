@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './layout.module.css';
 import logoImg from '../../logo-mindshield-transparent.png';
-import { Home, FileText, Calendar, Video, BookHeart, LogOut, Info, Menu, X, PenTool } from 'lucide-react';
+import { Home, FileText, Calendar, Video, BookHeart, LogOut, Info, Menu, X, PenTool, ClipboardList } from 'lucide-react';
 import Chatbot from '../components/Chatbot/Chatbot';
 
 export default function KonseliLayout({ children }) {
@@ -55,6 +55,9 @@ export default function KonseliLayout({ children }) {
           </Link>
           <Link href="/konseli/penugasan" className={styles.navItem}>
             <PenTool size={20} /> Penugasan Terapeutik
+          </Link>
+          <Link href="/konseli/laporan" className={styles.navItem}>
+            <ClipboardList size={20} /> Laporan Konseling
           </Link>
         </nav>
 
