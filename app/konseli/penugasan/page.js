@@ -8,8 +8,8 @@ import styles from './penugasan.module.css';
 export default function PenugasanTerapeutik() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [needHelp, setNeedHelp] = useState('');
   const [riskLevel, setRiskLevel] = useState(0);
+  const [needHelp, setNeedHelp] = useState('');
 
   const handleHelpChange = (val) => {
     setNeedHelp(val);
@@ -59,6 +59,18 @@ export default function PenugasanTerapeutik() {
             <p className={styles.sectionDesc}>Sebelum memulai, jawab pertanyaan berikut sesuai keadaanmu saat ini.</p>
             
             <div className={styles.formGroup}>
+              <label>Seberapa aman kamu merasa saat ini? (Skala 1-10)</label>
+              <input type="range" min="1" max="10" defaultValue="5" className={styles.rangeInput} />
+              <div className={styles.rangeLabels}><span>1 (Sangat Tidak Aman)</span><span>10 (Sangat Aman)</span></div>
+            </div>
+
+            <div className={styles.formGroup}>
+              <label>Seberapa kuat tekanan emosi yang kamu rasakan saat ini? (Skala 1-10)</label>
+              <input type="range" min="1" max="10" defaultValue="5" className={styles.rangeInput} />
+              <div className={styles.rangeLabels}><span>1 (Sangat Rendah)</span><span>10 (Sangat Kuat)</span></div>
+            </div>
+
+            <div className={styles.formGroup}>
               <label>Seberapa kuat dorongan menyakiti diri yang kamu rasakan saat ini? (Skala 1-10)</label>
               <input 
                 type="range" 
@@ -67,23 +79,20 @@ export default function PenugasanTerapeutik() {
                 onChange={(e) => setRiskLevel(parseInt(e.target.value))}
                 className={styles.rangeInput}
               />
-              <div className={styles.rangeLabels}>
-                <span>1 (Sangat Rendah)</span>
-                <span>10 (Sangat Kuat)</span>
-              </div>
+              <div className={styles.rangeLabels}><span>1 (Sangat Rendah)</span><span>10 (Sangat Kuat)</span></div>
               <div style={{textAlign: 'center', fontWeight: 'bold', color: 'var(--primary)', marginTop: '8px'}}>Skor: {riskLevel}</div>
             </div>
 
             <div className={styles.formGroup}>
-              <label>Apakah kamu merasa butuh bantuan segera untuk menjaga dirimu tetap aman?</label>
+              <label>Apakah kamu membutuhkan bantuan orang lain sekarang?</label>
               <div className={styles.radioGroup}>
                 <label className={styles.radioLabel}>
                   <input type="radio" name="needHelp" value="yes" onChange={() => handleHelpChange('yes')} required />
-                  Ya, saya butuh bantuan
+                  Ya
                 </label>
                 <label className={styles.radioLabel}>
                   <input type="radio" name="needHelp" value="no" onChange={() => handleHelpChange('no')} required />
-                  Tidak, saya masih bisa mengendalikan diri
+                  Tidak
                 </label>
               </div>
             </div>
@@ -95,7 +104,7 @@ export default function PenugasanTerapeutik() {
                   <h4>Pesan Sistem:</h4>
                   <p>Kamu tidak harus menghadapi ini sendirian. Segera hubungi guru BK, konselor, orang tua/wali, keluarga, atau orang dewasa yang kamu percaya. Latihan ini dapat dilanjutkan setelah kamu berada dalam kondisi yang lebih aman.</p>
                   <div className={styles.actionButtons}>
-                    <button type="button" className="btn-danger" onClick={() => router.push('/konseli/panduan#darurat')}>Hubungi Konselor / Darurat</button>
+                    <button type="button" className="btn-danger" onClick={() => router.push('/konseli/panduan#darurat')}>Hubungi Konselor</button>
                     <button type="button" className="btn-secondary" onClick={() => { setNeedHelp('no'); setRiskLevel(5); }}>Saya Sudah Lebih Aman dan Ingin Melanjutkan</button>
                   </div>
                 </div>
@@ -112,8 +121,24 @@ export default function PenugasanTerapeutik() {
                   <h2>Situasi yang Membuat Saya Tertekan</h2>
                 </div>
                 <div className={styles.formGroup}>
-                  <label>Tuliskan satu kejadian yang membuatmu merasa sedih, marah, kecewa, takut, malu, cemas, kesepian, atau muncul dorongan menyakiti diri.</label>
-                  <textarea rows="4" placeholder="Misalnya: Teman saya mengabaikan pesan saya, padahal dia online..." required></textarea>
+                  <label>Apa yang terjadi? Di mana? Dengan siapa?</label>
+                  <textarea rows="3" required></textarea>
+                </div>
+                <div className={styles.formGroup}>
+                  <label>Perasaan apa yang muncul?</label>
+                  <textarea rows="2" required></textarea>
+                </div>
+                <div className={styles.formGroup}>
+                  <label>Seberapa kuat emosi itu dari 1-10?</label>
+                  <input type="number" min="1" max="10" required className={styles.inputItem} />
+                </div>
+                <div className={styles.formGroup}>
+                  <label>Pikiran apa yang langsung muncul di kepalamu?</label>
+                  <textarea rows="2" required></textarea>
+                </div>
+                <div className={styles.formGroup}>
+                  <label>Seberapa kuat dorongan itu dari 1-10?</label>
+                  <input type="number" min="1" max="10" required className={styles.inputItem} />
                 </div>
               </div>
 
@@ -125,12 +150,24 @@ export default function PenugasanTerapeutik() {
                 </div>
                 <p className={styles.sectionDesc}>Sekarang, coba periksa kembali pikiran negatif yang muncul. Tujuannya bukan memaksa kamu berpikir positif, tetapi membantumu melihat keadaan dengan lebih seimbang dan aman.</p>
                 <div className={styles.formGroup}>
-                  <label>Apa pikiran negatif yang muncul saat itu?</label>
-                  <textarea rows="3" placeholder="Misalnya: Mereka benci padaku..." required></textarea>
+                  <label>Pikiran apa yang paling mengganggumu?</label>
+                  <textarea rows="2" required></textarea>
                 </div>
                 <div className={styles.formGroup}>
-                  <label>Apakah ada penjelasan lain yang lebih masuk akal tentang kejadian tersebut?</label>
-                  <textarea rows="3" placeholder="Misalnya: Mungkin dia sedang sibuk atau lupa membalas..." required></textarea>
+                  <label>Apa yang membuatmu merasa pikiran itu benar?</label>
+                  <textarea rows="2" required></textarea>
+                </div>
+                <div className={styles.formGroup}>
+                  <label>Apa fakta lain yang menunjukkan bahwa pikiran itu belum tentu benar?</label>
+                  <textarea rows="2" required></textarea>
+                </div>
+                <div className={styles.formGroup}>
+                  <label>Jika temanmu mengalami hal yang sama, nasihat baik apa yang akan kamu berikan?</label>
+                  <textarea rows="2" required></textarea>
+                </div>
+                <div className={styles.formGroup}>
+                  <label>Pikiran baru apa yang lebih seimbang, realistis, dan aman untuk kamu pegang?</label>
+                  <textarea rows="2" required></textarea>
                 </div>
               </div>
 
@@ -140,13 +177,23 @@ export default function PenugasanTerapeutik() {
                   <span className={styles.stepBadge}>D</span>
                   <h2>Tindakan Aman yang Akan Saya Lakukan</h2>
                 </div>
-                <p className={styles.sectionDesc}>Pilih atau tuliskan tindakan aman yang akan kamu lakukan setelah mengisi latihan ini saat kamu merasa sangat tertekan.</p>
+                <p className={styles.sectionDesc}>Pilih tindakan aman yang akan kamu lakukan setelah mengisi latihan ini.</p>
                 
                 <div className={styles.formGroup}>
-                  <label>Rencana Aman Saya (Pilih/tulis 3 tindakan):</label>
-                  <input type="text" placeholder="1. Mendengarkan musik" required className={styles.inputItem} />
-                  <input type="text" placeholder="2. Menulis di jurnal" required className={styles.inputItem} />
-                  <input type="text" placeholder="3. Tarik napas dalam 10 kali" required className={styles.inputItem} />
+                  <label>Rencana Aman Saya</label>
+                  <p style={{fontSize: '0.9rem', color: 'var(--text-muted)'}}>Saat saya merasa sangat tertekan, saya akan melakukan tiga tindakan aman berikut:</p>
+                  
+                  <div className={styles.checkboxGroup}>
+                    <label className={styles.checkboxLabel}><input type="checkbox" /> Pindah ke tempat yang lebih aman</label>
+                    <label className={styles.checkboxLabel}><input type="checkbox" /> Menghubungi guru BK, konselor, orang tua/wali, atau orang dewasa tepercaya</label>
+                    <label className={styles.checkboxLabel}><input type="checkbox" /> Menjauh dari hal-hal yang membuat saya tidak aman</label>
+                    <label className={styles.checkboxLabel}><input type="checkbox" /> Mengatur napas secara perlahan</label>
+                    <label className={styles.checkboxLabel}><input type="checkbox" /> Minum air putih</label>
+                    <label className={styles.checkboxLabel}><input type="checkbox" /> Membaca kembali pikiran alternatif yang sudah saya tulis</label>
+                    <label className={styles.checkboxLabel}><input type="checkbox" /> Menulis perasaan tanpa menyakiti diri</label>
+                    <label className={styles.checkboxLabel}><input type="checkbox" /> Mendengarkan musik yang menenangkan</label>
+                    <label className={styles.checkboxLabel}><input type="checkbox" /> Melakukan aktivitas ringan yang aman, seperti menggambar, berjalan ke ruang BK, atau duduk bersama keluarga</label>
+                  </div>
                 </div>
               </div>
 
@@ -157,8 +204,24 @@ export default function PenugasanTerapeutik() {
                   <h2>Refleksi Setelah Latihan</h2>
                 </div>
                 <div className={styles.formGroup}>
-                  <label>Bagaimana perasaanmu setelah menulis ini semua?</label>
-                  <textarea rows="3" placeholder="Ceritakan perasaanmu..." required></textarea>
+                  <label>Bagaimana perasaanmu setelah mengisi latihan ini?</label>
+                  <textarea rows="2" required></textarea>
+                </div>
+                <div className={styles.formGroup}>
+                  <label>Seberapa kuat emosimu sekarang dari 1-10?</label>
+                  <input type="number" min="1" max="10" required className={styles.inputItem} />
+                </div>
+                <div className={styles.formGroup}>
+                  <label>Seberapa kuat dorongan menyakiti diri sekarang dari 1-10?</label>
+                  <input type="number" min="1" max="10" required className={styles.inputItem} />
+                </div>
+                <div className={styles.formGroup}>
+                  <label>Pikiran alternatif apa yang paling membantumu?</label>
+                  <textarea rows="2" required></textarea>
+                </div>
+                <div className={styles.formGroup}>
+                  <label>Apa yang ingin kamu bahas dengan konselor pada sesi berikutnya?</label>
+                  <textarea rows="2" required></textarea>
                 </div>
               </div>
 
