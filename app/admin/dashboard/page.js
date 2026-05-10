@@ -1,93 +1,99 @@
+'use client';
+import styles from './dashboard.module.css';
+import { Users, Shield, Activity, Database, AlertTriangle, CheckCircle, Clock, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
-import styles from '../../konseli/dashboard/dashboard.module.css'; // Reusing dashboard styles
-import { Users, Server, ShieldCheck, Activity } from 'lucide-react';
+
+const stats = [
+  { label: 'Total Pengguna', value: '128', icon: Users, color: '#1a56db', bg: 'rgba(26,86,219,0.1)' },
+  { label: 'Konselor Aktif', value: '12', icon: Shield, color: '#0e9f6e', bg: 'rgba(14,159,110,0.1)' },
+  { label: 'Sesi Bulan Ini', value: '87', icon: Activity, color: '#f59e0b', bg: 'rgba(245,158,11,0.1)' },
+  { label: 'Risiko Tinggi', value: '5', icon: AlertTriangle, color: '#ef4444', bg: 'rgba(239,68,68,0.1)' },
+];
+
+const recentUsers = [
+  { name: 'Andi Pratama', role: 'Konseli', status: 'Menunggu Verifikasi', time: '5 mnt lalu' },
+  { name: 'Dr. Sari W.', role: 'Konselor', status: 'Aktif', time: '1 jam lalu' },
+  { name: 'Budi Santoso', role: 'Konseli', status: 'Aktif', time: '2 jam lalu' },
+  { name: 'Rina Lestari', role: 'Konseli', status: 'Menunggu Verifikasi', time: '3 jam lalu' },
+];
+
+const quickLinks = [
+  { href: '/admin/users', label: 'Kelola Akun & Verifikasi', icon: Users, desc: 'Verifikasi & kelola pengguna baru' },
+  { href: '/admin/monitoring', label: 'Monitoring Sistem', icon: Activity, desc: 'Pantau aktivitas & statistik' },
+  { href: '/admin/panduan', label: 'Kelola Panduan', icon: CheckCircle, desc: 'Edit konten panduan aplikasi' },
+  { href: '/admin/keamanan', label: 'Privasi & Keamanan', icon: Shield, desc: 'Pengaturan keamanan sistem' },
+];
 
 export default function AdminDashboard() {
   return (
-    <div className="fade-in">
-      <header className={styles.header}>
+    <div className={styles.page}>
+      <div className={styles.header}>
         <div>
-          <h1 style={{color: '#2b2d42'}}>System Administration</h1>
-          <p className="text-muted">Mind Shield Portal Management</p>
+          <h1 className={styles.title}>Dashboard Admin</h1>
+          <p className={styles.subtitle}>Selamat datang! Pantau dan kelola seluruh sistem Mind Shield.</p>
         </div>
-        <div className={styles.dateBadge} style={{color: '#2b2d42'}}>
-          Server Status: Online
-        </div>
-      </header>
+        <div className={styles.badge}><Shield size={16} /> Super Admin</div>
+      </div>
 
-      <section className={styles.statsGrid} style={{gridTemplateColumns: 'repeat(4, 1fr)'}}>
-        <div className="card">
-          <div className={styles.statIcon} style={{backgroundColor: 'rgba(79, 138, 139, 0.1)', color: 'var(--primary)'}}>
-            <Users size={24} />
+      {/* Stats */}
+      <div className={styles.statsGrid}>
+        {stats.map((s, i) => (
+          <div key={i} className={styles.statCard}>
+            <div className={styles.statIcon} style={{ backgroundColor: s.bg, color: s.color }}>
+              <s.icon size={24} />
+            </div>
+            <div>
+              <div className={styles.statValue}>{s.value}</div>
+              <div className={styles.statLabel}>{s.label}</div>
+            </div>
           </div>
-          <h3>Total Pengguna</h3>
-          <p>145 Konseli, 12 Konselor</p>
-        </div>
-        <div className="card">
-          <div className={styles.statIcon} style={{backgroundColor: 'rgba(239, 71, 111, 0.1)', color: 'var(--alert)'}}>
-            <ShieldCheck size={24} />
-          </div>
-          <h3>Verifikasi Tertunda</h3>
-          <p style={{color: 'var(--alert)'}}>3 Registrasi Baru</p>
-        </div>
-        <div className="card">
-          <div className={styles.statIcon} style={{backgroundColor: 'rgba(6, 214, 160, 0.1)', color: 'var(--success)'}}>
-            <Server size={24} />
-          </div>
-          <h3>Uptime Database</h3>
-          <p>99.98%</p>
-        </div>
-        <div className="card">
-          <div className={styles.statIcon} style={{backgroundColor: 'rgba(144, 194, 231, 0.2)', color: 'var(--secondary)'}}>
-            <Activity size={24} />
-          </div>
-          <h3>Aktivitas Hari Ini</h3>
-          <p>42 Login, 8 Sesi</p>
-        </div>
-      </section>
+        ))}
+      </div>
 
-      <section className={styles.mainContent}>
-        <div className={styles.journeyCol}>
-          <h2 className={styles.sectionTitle}>Log Keamanan & Verifikasi</h2>
-          <div className="card">
-            <ul className={styles.timeline}>
-              <li className={`${styles.timelineItem} ${styles.active}`}>
-                <div className={styles.timelineDot} style={{borderColor: 'var(--alert)'}}></div>
-                <div className={styles.timelineContent}>
-                  <h4 style={{color: 'var(--text-main)'}}>Verifikasi Pendaftaran Konselor Baru</h4>
-                  <p>Dr. Anita M. submit SIP untuk verifikasi. Menunggu persetujuan hak akses Admin.</p>
-                  <button className="btn-primary" style={{marginTop: '10px', backgroundColor: '#2b2d42'}}>
-                    Tinjau Dokumen
-                  </button>
+      <div className={styles.mainGrid}>
+        {/* Recent Users */}
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <h2 className={styles.cardTitle}><Users size={18} /> Aktivitas Pengguna Terbaru</h2>
+            <Link href="/admin/users" className={styles.cardLink}>Lihat semua</Link>
+          </div>
+          <div className={styles.userList}>
+            {recentUsers.map((u, i) => (
+              <div key={i} className={styles.userItem}>
+                <div className={styles.userAvatar}>{u.name[0]}</div>
+                <div className={styles.userInfo}>
+                  <span className={styles.userName}>{u.name}</span>
+                  <span className={styles.userRole}>{u.role}</span>
                 </div>
-              </li>
-              <li className={`${styles.timelineItem}`}>
-                <div className={styles.timelineDot}></div>
-                <div className={styles.timelineContent}>
-                  <h4 style={{color: 'var(--text-main)'}}>Peringatan Privasi (Auto-Audit)</h4>
-                  <p>Sistem enkripsi end-to-end berjalan normal untuk 8 sesi hari ini. Tidak ada kebocoran (breach) terdeteksi.</p>
+                <div className={styles.userRight}>
+                  <span className={`${styles.statusBadge} ${u.status === 'Aktif' ? styles.statusAktif : styles.statusPending}`}>
+                    {u.status}
+                  </span>
+                  <span className={styles.userTime}>{u.time}</span>
                 </div>
-              </li>
-              <li className={`${styles.timelineItem}`}>
-                <div className={styles.timelineDot}></div>
-                <div className={styles.timelineContent}>
-                  <h4 style={{color: 'var(--text-main)'}}>Backup Harian</h4>
-                  <p>Berhasil di-backup ke secure cloud storage pada 01:00 WIB.</p>
-                </div>
-              </li>
-            </ul>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className={styles.asideCol}>
-          <h2 className={styles.sectionTitle}>Kelola Cepat</h2>
-          <div className="card" style={{display: 'flex', flexDirection: 'column', gap: '12px'}}>
-             <Link href="/admin/users" className="btn-primary" style={{textAlign: 'center', backgroundColor: '#e2e8f0', color: '#2b2d42'}}>Kelola Akun</Link>
-             <Link href="/admin/jadwal" className="btn-primary" style={{textAlign: 'center', backgroundColor: '#e2e8f0', color: '#2b2d42'}}>Master Jadwal</Link>
-             <Link href="/admin/pengaturan" className="btn-primary" style={{textAlign: 'center', backgroundColor: '#2b2d42', color: 'white'}}>Audit Keamanan Log</Link>
+        {/* Quick Links */}
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <h2 className={styles.cardTitle}><TrendingUp size={18} /> Akses Cepat</h2>
+          </div>
+          <div className={styles.quickGrid}>
+            {quickLinks.map((q, i) => (
+              <Link key={i} href={q.href} className={styles.quickCard}>
+                <q.icon size={22} className={styles.quickIcon} />
+                <div>
+                  <div className={styles.quickLabel}>{q.label}</div>
+                  <div className={styles.quickDesc}>{q.desc}</div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

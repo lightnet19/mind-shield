@@ -1,0 +1,50 @@
+.page { padding: 2rem; max-width: 1200px; }
+.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+.title { font-size: 1.75rem; font-weight: 700; color: #1f2937; margin: 0 0 0.25rem; }
+.subtitle { color: #6b7280; font-size: 0.95rem; margin: 0; }
+.headerStats { display: flex; gap: 0.5rem; }
+.chip { padding: 4px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; background: rgba(245,158,11,0.1); color: #d97706; }
+.chipGreen { background: rgba(14,159,110,0.1); color: #0e9f6e; }
+
+.toolbar { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; align-items: center; }
+.searchBox { position: relative; flex: 1; min-width: 200px; }
+.searchIcon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #9ca3af; }
+.searchInput { width: 100%; padding: 10px 12px 10px 36px; border: 1px solid #e5e7eb; border-radius: 10px; font-size: 0.9rem; outline: none; box-sizing: border-box; }
+.searchInput:focus { border-color: #1a56db; box-shadow: 0 0 0 3px rgba(26,86,219,0.08); }
+.filterGroup { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.filterBtn { padding: 8px 14px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 0.82rem; background: #fff; cursor: pointer; transition: all 0.2s; color: #4b5563; }
+.filterBtn:hover { border-color: #1a56db; color: #1a56db; }
+.filterActive { background: #1a56db; color: #fff !important; border-color: #1a56db !important; }
+
+.tableWrap { background: #fff; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #f3f4f6; overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; }
+.table th { text-align: left; padding: 1rem 1.25rem; font-size: 0.8rem; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #f3f4f6; }
+.table td { padding: 1rem 1.25rem; border-bottom: 1px solid #f9fafb; font-size: 0.9rem; color: #374151; }
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: #f9fafb; }
+.empty { text-align: center; color: #9ca3af; padding: 3rem !important; }
+
+.nameCell { display: flex; align-items: center; gap: 0.75rem; }
+.avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #1a56db, #0e9f6e); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.emailCell { color: #6b7280; font-size: 0.85rem; }
+.dateCell { color: #9ca3af; font-size: 0.82rem; }
+
+.roleBadge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; }
+.roleKonselor { background: rgba(43,45,66,0.08); color: #2b2d42; }
+.roleKonseli { background: rgba(26,86,219,0.08); color: #1a56db; }
+
+.statusBadge { display: inline-block; padding: 3px 10px; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; }
+.status_aktif { background: rgba(14,159,110,0.1); color: #0e9f6e; }
+.status_pending { background: rgba(245,158,11,0.1); color: #d97706; }
+.status_ditolak { background: rgba(239,68,68,0.1); color: #ef4444; }
+.status_dinonaktifkan { background: rgba(107,114,128,0.1); color: #6b7280; }
+
+.actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.btnApprove { display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; background: rgba(14,159,110,0.1); color: #0e9f6e; border: 1px solid rgba(14,159,110,0.2); cursor: pointer; transition: all 0.2s; }
+.btnApprove:hover { background: #0e9f6e; color: #fff; }
+.btnReject { display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); cursor: pointer; transition: all 0.2s; }
+.btnReject:hover { background: #ef4444; color: #fff; }
+.btnDeact { padding: 5px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; background: rgba(107,114,128,0.1); color: #6b7280; border: 1px solid rgba(107,114,128,0.2); cursor: pointer; transition: all 0.2s; }
+.btnDeact:hover { background: #6b7280; color: #fff; }
+.btnRestore { padding: 5px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; background: rgba(26,86,219,0.1); color: #1a56db; border: 1px solid rgba(26,86,219,0.2); cursor: pointer; transition: all 0.2s; }
+.btnRestore:hover { background: #1a56db; color: #fff; }
