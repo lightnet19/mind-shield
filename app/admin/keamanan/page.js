@@ -1,71 +1,46 @@
 'use client';
+import styles from './keamanan.module.css';
+import { Shield, Lock, Database } from 'lucide-react';
+import { useState } from 'react';
 
-import s from '../../shared.module.css';
-import { Shield, Lock, Eye } from 'lucide-react';
+export default function AdminKeamanan() {
+  const [settings, setSettings] = useState({ twoFactor: false, encryptData: true, anonymizeExport: true, sessionTimeout: '30' });
+  const [saved, setSaved] = useState(false);
+  const toggle = (key) => setSettings(p => ({ ...p, [key]: !p[key] }));
+  const save = () => { setSaved(true); setTimeout(() => setSaved(false), 2000); };
 
-const logs = [
-  { time: '14 Apr 2026, 09:15', event: 'Login Admin berhasil', user: 'admin@mindshield.id', level: 'Info' },
-  { time: '14 Apr 2026, 08:30', event: 'Sesi konseling #45 dienkripsi end-to-end', user: 'System', level: 'Info' },
-  { time: '14 Apr 2026, 01:00', event: 'Backup harian otomatis selesai', user: 'System', level: 'Success' },
-  { time: '13 Apr 2026, 22:10', event: 'Percobaan login gagal (3x) dari IP 103.xx.xx.xx', user: 'unknown@mail.com', level: 'Warning' },
-  { time: '13 Apr 2026, 18:45', event: 'Data screening konseli #1029 diakses oleh Konselor Budi H.', user: 'budi@email.com', level: 'Info' },
-  { time: '13 Apr 2026, 14:00', event: 'Sesi video konseling #44 direkam & dienkripsi', user: 'System', level: 'Info' },
-  { time: '12 Apr 2026, 01:00', event: 'Backup harian otomatis selesai', user: 'System', level: 'Success' },
-];
-
-function levelBadge(level) {
-  if (level === 'Warning') return `${s.badge} ${s.badgeRed}`;
-  if (level === 'Success') return `${s.badge} ${s.badgeGreen}`;
-  return `${s.badge} ${s.badgeBlue}`;
-}
-
-export default function Keamanan() {
   return (
-    <div className="fade-in">
-      <h1 className={s.pageTitle}>Privasi & Keamanan Sistem</h1>
-      <p className={s.pageDesc}>Monitor log akses data, enkripsi, dan keamanan platform Mind Shield.</p>
-
-      <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 24}}>
-        <div className="card" style={{textAlign: 'center'}}>
-          <Shield size={32} color="var(--success)" style={{marginBottom: 12}} />
-          <h4 style={{marginBottom: 4}}>Enkripsi Data</h4>
-          <p style={{color: 'var(--success)', fontWeight: 600}}>AES-256 Aktif ✓</p>
+    <div className={styles.page}>
+      <h1 className={styles.title}>Privasi & Keamanan</h1>
+      <p className={styles.subtitle}>Konfigurasi keamanan dan privasi data pengguna.</p>
+      {saved && <div className={styles.toast}>✅ Pengaturan tersimpan!</div>}
+      <div className={styles.sections}>
+        <div className={styles.section}>
+          <div className={styles.sectionHeader}><Lock size={18}/><h2>Autentikasi</h2></div>
+          <div className={styles.settingRow}>
+            <div><div className={styles.settingLabel}>Verifikasi Dua Langkah (2FA)</div><div className={styles.settingDesc}>Wajibkan OTP email saat login admin</div></div>
+            <button onClick={()=>toggle('twoFactor')} className={`${styles.toggle} ${settings.twoFactor?styles.toggleOn:''}`}><span className={styles.toggleKnob}/></button>
+          </div>
+          <div className={styles.settingRow}>
+            <div><div className={styles.settingLabel}>Batas Waktu Sesi</div><div className={styles.settingDesc}>Logout otomatis jika tidak aktif</div></div>
+            <select className={styles.select} value={settings.sessionTimeout} onChange={e=>setSettings(p=>({...p,sessionTimeout:e.target.value}))}>
+              <option value="15">15 menit</option><option value="30">30 menit</option><option value="60">60 menit</option>
+            </select>
+          </div>
         </div>
-        <div className="card" style={{textAlign: 'center'}}>
-          <Lock size={32} color="var(--primary)" style={{marginBottom: 12}} />
-          <h4 style={{marginBottom: 4}}>Row Level Security</h4>
-          <p style={{color: 'var(--primary)', fontWeight: 600}}>Supabase RLS Aktif ✓</p>
-        </div>
-        <div className="card" style={{textAlign: 'center'}}>
-          <Eye size={32} color="var(--secondary)" style={{marginBottom: 12}} />
-          <h4 style={{marginBottom: 4}}>Akses Terakhir</h4>
-          <p style={{color: 'var(--secondary)', fontWeight: 600}}>0 Breach Terdeteksi</p>
+        <div className={styles.section}>
+          <div className={styles.sectionHeader}><Database size={18}/><h2>Data & Privasi</h2></div>
+          <div className={styles.settingRow}>
+            <div><div className={styles.settingLabel}>Enkripsi Data Konseling</div><div className={styles.settingDesc}>Semua data sesi dienkripsi AES-256</div></div>
+            <button onClick={()=>toggle('encryptData')} className={`${styles.toggle} ${settings.encryptData?styles.toggleOn:''}`}><span className={styles.toggleKnob}/></button>
+          </div>
+          <div className={styles.settingRow}>
+            <div><div className={styles.settingLabel}>Anonimisasi Saat Ekspor</div><div className={styles.settingDesc}>Hapus identitas saat ekspor laporan</div></div>
+            <button onClick={()=>toggle('anonymizeExport')} className={`${styles.toggle} ${settings.anonymizeExport?styles.toggleOn:''}`}><span className={styles.toggleKnob}/></button>
+          </div>
         </div>
       </div>
-
-      <div className="card">
-        <h3 style={{marginBottom: 16, color: 'var(--secondary)'}}>📜 Log Aktivitas & Keamanan</h3>
-        <table className={s.table}>
-          <thead>
-            <tr>
-              <th>Waktu</th>
-              <th>Event</th>
-              <th>User/Source</th>
-              <th>Level</th>
-            </tr>
-          </thead>
-          <tbody>
-            {logs.map((log, i) => (
-              <tr key={i}>
-                <td style={{whiteSpace: 'nowrap', fontSize: '0.9rem'}}>{log.time}</td>
-                <td>{log.event}</td>
-                <td style={{color: 'var(--text-muted)', fontSize: '0.9rem'}}>{log.user}</td>
-                <td><span className={levelBadge(log.level)}>{log.level}</span></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <button onClick={save} className={styles.btnSave}><Shield size={16}/> Simpan Pengaturan</button>
     </div>
   );
 }
