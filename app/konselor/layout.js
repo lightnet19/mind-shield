@@ -5,10 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../konseli/layout.module.css';
 import logoImg from '../../logo-mindshield-transparent.png';
-import { Home, Users, FileBarChart, Video, CalendarCheck, LogOut, Menu, X, ClipboardList, MessageCircle } from 'lucide-react';
+import { Home, Users, FileBarChart, Video, CalendarCheck, LogOut, Menu, X, ClipboardList, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function KonselorLayout({ children }) {
   const [open, setOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
     <div className={styles.layout}>
@@ -24,50 +25,53 @@ export default function KonselorLayout({ children }) {
 
       {open && <div className={`${styles.overlay} ${styles.overlayVisible}`} onClick={() => setOpen(false)} />}
 
-      <aside className={`${styles.sidebar} ${open ? styles.sidebarOpen : ''}`}>
+      <aside className={`${styles.sidebar} ${open ? styles.sidebarOpen : ''} ${collapsed ? styles.sidebarCollapsed : ''}`}>
         <div className={styles.sidebarHeader}>
           <div className={styles.logo} style={{ padding: 0, background: 'transparent' }}>
             <Image src={logoImg} alt="Mind Shield Logo" width={36} height={36} style={{ objectFit: 'contain' }} />
           </div>
-          <span className={styles.brandName} style={{ color: 'var(--text-main)' }}>Mind Shield Konselor</span>
-          <button className={styles.hamburger} onClick={() => setOpen(false)}
-            style={{ marginLeft: 'auto', display: 'flex' }} aria-label="Tutup menu">
-            <X size={20} />
+          <span className={styles.brandName}>Mind Shield Konselor</span>
+          <button
+            className={styles.collapseBtn}
+            onClick={() => setCollapsed(!collapsed)}
+            aria-label={collapsed ? 'Perlebar sidebar' : 'Lipat sidebar'}
+          >
+            {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
           </button>
         </div>
 
         <nav className={styles.nav} onClick={() => setOpen(false)}>
-          <Link href="/konselor/dashboard" className={styles.navItem}>
-            <Home size={20} /> Dashboard Utama
+          <Link href="/konselor/dashboard" className={styles.navItem} title={collapsed ? 'Dashboard Utama' : ''}>
+            <Home size={20} /><span className={styles.navLabel}>Dashboard Utama</span>
           </Link>
-          <Link href="/konselor/tinjau-screening" className={styles.navItem}>
-            <FileBarChart size={20} /> Tinjau Screening Baru
+          <Link href="/konselor/tinjau-screening" className={styles.navItem} title={collapsed ? 'Tinjau Screening' : ''}>
+            <FileBarChart size={20} /><span className={styles.navLabel}>Tinjau Screening Baru</span>
           </Link>
-          <Link href="/konselor/pasien" className={styles.navItem}>
-            <Users size={20} /> Daftar Konseli
+          <Link href="/konselor/pasien" className={styles.navItem} title={collapsed ? 'Daftar Konseli' : ''}>
+            <Users size={20} /><span className={styles.navLabel}>Daftar Konseli</span>
           </Link>
-          <Link href="/konselor/jadwal" className={styles.navItem}>
-            <CalendarCheck size={20} /> Jadwal Sesi
+          <Link href="/konselor/jadwal" className={styles.navItem} title={collapsed ? 'Jadwal Sesi' : ''}>
+            <CalendarCheck size={20} /><span className={styles.navLabel}>Jadwal Sesi</span>
           </Link>
-          <Link href="/konselor/pesan" className={styles.navItem}>
-            <MessageCircle size={20} /> Pesan & Notifikasi
+          <Link href="/konselor/pesan" className={styles.navItem} title={collapsed ? 'Pesan & Notifikasi' : ''}>
+            <MessageCircle size={20} /><span className={styles.navLabel}>Pesan & Notifikasi</span>
           </Link>
-          <Link href="/konselor/sesi" className={styles.navItem}>
-            <Video size={20} /> Ruang Konseling
+          <Link href="/konselor/sesi" className={styles.navItem} title={collapsed ? 'Ruang Konseling' : ''}>
+            <Video size={20} /><span className={styles.navLabel}>Ruang Konseling</span>
           </Link>
-          <Link href="/konselor/laporan" className={styles.navItem}>
-            <ClipboardList size={20} /> Laporan Konseling
+          <Link href="/konselor/laporan" className={styles.navItem} title={collapsed ? 'Laporan Konseling' : ''}>
+            <ClipboardList size={20} /><span className={styles.navLabel}>Laporan Konseling</span>
           </Link>
         </nav>
 
         <div className={styles.sidebarFooter}>
-          <Link href="/login" className={styles.logoutBtn}>
-            <LogOut size={20} /> Keluar
+          <Link href="/login" className={styles.logoutBtn} title={collapsed ? 'Keluar' : ''}>
+            <LogOut size={20} /><span className={styles.logoutLabel}>Keluar</span>
           </Link>
         </div>
       </aside>
 
-      <main className={styles.main}>
+      <main className={`${styles.main} ${collapsed ? styles.mainCollapsed : ''}`}>
         {children}
       </main>
     </div>
