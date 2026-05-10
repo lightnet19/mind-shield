@@ -16,6 +16,7 @@ export default function Home() {
             <span className={styles.brandName}>Mind Shield</span>
           </div>
           <div className={styles.navLinks}>
+            <Link href="/#fitur" className={styles.navLink}>Fitur</Link>
             <Link href="/dashboard" className={styles.navLink}>Dashboard</Link>
             <Link href="/panduan" className={styles.navLink}>Panduan Penggunaan Aplikasi</Link>
             <Link href="/login" className={styles.btnNav}>Masuk</Link>
@@ -59,6 +60,56 @@ export default function Home() {
               style={{ objectFit: 'contain' }} 
               priority
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="fitur" className={styles.features}>
+        <div className={styles.featuresHeader}>
+          <span className={styles.featuresTag}>Fitur Utama</span>
+          <h2 className={styles.featuresTitle}>Solusi Berbasis Bukti</h2>
+        </div>
+        
+        <div className={styles.featureGrid}>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIconWrapper}>
+              <Shield size={32} />
+            </div>
+            <h3 className={styles.featureCardTitle}>Screening Psikologis</h3>
+            <p className={styles.featureCardText}>
+              Identifikasi tingkat kerentanan emosional dan pemikiran negatif melalui kuesioner terstandar CBT.
+            </p>
+          </div>
+
+          <div className={styles.featureCard}>
+            <div className={styles.featureIconWrapper}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 8v4l3 3"></path></svg>
+            </div>
+            <h3 className={styles.featureCardTitle}>Restrukturisasi Kognitif</h3>
+            <p className={styles.featureCardText}>
+              Pahami dan ubah core beliefs (keyakinan inti) negatif yang memicu tindakan self-injury.
+            </p>
+          </div>
+
+          <div className={styles.featureCard}>
+            <div className={styles.featureIconWrapper}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"></path><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path></svg>
+            </div>
+            <h3 className={styles.featureCardTitle}>Tele-Counseling</h3>
+            <p className={styles.featureCardText}>
+              Ruang aman untuk terhubung dengan konselor profesional secara anonim dan privat.
+            </p>
+          </div>
+
+          <div className={styles.featureCard}>
+            <div className={styles.featureIconWrapper}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 className={styles.featureCardTitle}>Panduan Keselamatan</h3>
+            <p className={styles.featureCardText}>
+              Prosedur darurat dan safety plan yang dapat diakses cepat ketika krisis melanda.
+            </p>
           </div>
         </div>
       </section>
