@@ -1,59 +1,76 @@
-import { ClipboardList, Brain, AlertTriangle } from 'lucide-react';
+'use client';
+import styles from './tinjau.module.css';
+import { ClipboardList, AlertTriangle, Eye, ChevronDown, ChevronUp } from 'lucide-react';
+import { useState } from 'react';
+
+const screenings = [
+  { id:1, name:'Dewi Ayu', date:'10 Mei 2026', risk:'Tinggi', isas1:18, isas2:52, coreBeliefs:'Negatif-Diri dominan', urgent:true },
+  { id:2, name:'Fajar Maulana', date:'10 Mei 2026', risk:'Sedang', isas1:9, isas2:31, coreBeliefs:'Negatif-Lain dominan', urgent:false },
+  { id:3, name:'Siti Nuraini', date:'9 Mei 2026', risk:'Rendah', isas1:3, isas2:14, coreBeliefs:'Positif-Diri dominan', urgent:false },
+  { id:4, name:'Andi P.', date:'8 Mei 2026', risk:'Sedang', isas1:11, isas2:28, coreBeliefs:'Negatif-Diri & Lain', urgent:false },
+];
+
+const riskColor = { Tinggi:'#ef4444', Sedang:'#f59e0b', Rendah:'#0e9f6e' };
+const riskBg = { Tinggi:'rgba(239,68,68,.1)', Sedang:'rgba(245,158,11,.1)', Rendah:'rgba(14,159,110,.1)' };
 
 export default function TinjauScreening() {
+  const [expanded, setExpanded] = useState(null);
+  const toggle = (id) => setExpanded(prev => prev === id ? null : id);
+
   return (
-    <div className="fade-in">
-      <div className="page-header">
-        <h1>Tinjau Hasil Screening</h1>
-        <p>Analisis hasil ISAS dan Core Beliefs dari konseli sebelum memulai sesi.</p>
+    <div className={styles.page}>
+      <div className={styles.header}>
+        <div>
+          <h1 className={styles.title}>Tinjau Screening Baru</h1>
+          <p className={styles.subtitle}>Hasil screening ISAS dan Core Beliefs konseli yang belum ditinjau.</p>
+        </div>
+        <span className={styles.urgentChip}><AlertTriangle size={14}/> {screenings.filter(s=>s.urgent).length} Darurat</span>
       </div>
 
-      <div className="grid">
-        <div className="card" style={{ gridColumn: '1 / -1' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-            <div>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '4px' }}>Ahmad Maulana</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Siswa Kelas 11 IPA 2 | ID: KNSL-0921</p>
-            </div>
-            <span style={{ background: '#FFF0F3', color: 'var(--alert)', padding: '6px 12px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <AlertTriangle size={16} /> Risiko Tinggi (Self-Injury Aktif)
-            </span>
-          </div>
-
-          <div className="grid">
-            <div style={{ background: 'var(--background)', padding: '20px', borderRadius: 'var(--radius-md)' }}>
-              <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', color: 'var(--secondary)' }}>
-                <ClipboardList size={20} /> Hasil ISAS (Ringkasan)
-              </h4>
-              <ul style={{ fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <li><strong>Riwayat:</strong> Cutting (Sering), Mencubit parah (Kadang)</li>
-                <li><strong>Usia Mulai:</strong> 15 Tahun</li>
-                <li><strong>Fungsi Dominan:</strong> Melepaskan tekanan emosional (Skor: 2), Menghukum diri sendiri (Skor: 2)</li>
-              </ul>
-              <button className="btn-outline" style={{ marginTop: '16px', width: '100%', fontSize: '0.9rem', padding: '8px' }}>Lihat Detail ISAS</button>
+      <div className={styles.list}>
+        {screenings.map(s => (
+          <div key={s.id} className={`${styles.card} ${s.urgent ? styles.cardUrgent : ''}`}>
+            <div className={styles.cardTop} onClick={() => toggle(s.id)}>
+              <div className={styles.avatar}>{s.name[0]}</div>
+              <div className={styles.info}>
+                <span className={styles.name}>{s.name}</span>
+                <span className={styles.date}>{s.date}</span>
+              </div>
+              <span className={styles.riskBadge} style={{ background: riskBg[s.risk], color: riskColor[s.risk] }}>
+                Risiko {s.risk}
+              </span>
+              {expanded === s.id ? <ChevronUp size={18} className={styles.chevron}/> : <ChevronDown size={18} className={styles.chevron}/>}
             </div>
 
-            <div style={{ background: 'var(--background)', padding: '20px', borderRadius: 'var(--radius-md)' }}>
-              <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', color: 'var(--accent)' }}>
-                <Brain size={20} /> Core Beliefs Terkuat
-              </h4>
-              <ul style={{ fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <li>1. "Saya pada dasarnya cacat atau rusak." (Skor: 5/5)</li>
-                <li>2. "Saya harus selalu sempurna agar diterima." (Skor: 4/5)</li>
-                <li>3. "Emosi saya terlalu kuat dan tidak bisa dikendalikan." (Skor: 4/5)</li>
-              </ul>
-              <button className="btn-outline" style={{ marginTop: '16px', width: '100%', fontSize: '0.9rem', padding: '8px' }}>Lihat Detail Core Beliefs</button>
-            </div>
+            {expanded === s.id && (
+              <div className={styles.detail}>
+                <div className={styles.detailGrid}>
+                  <div className={styles.detailBox}>
+                    <div className={styles.detailLabel}>ISAS Seksi I (Perilaku)</div>
+                    <div className={styles.detailValue}>{s.isas1} <span className={styles.detailUnit}>frekuensi</span></div>
+                  </div>
+                  <div className={styles.detailBox}>
+                    <div className={styles.detailLabel}>ISAS Seksi II (Fungsi)</div>
+                    <div className={styles.detailValue}>{s.isas2} <span className={styles.detailUnit}>/ 78 poin</span></div>
+                  </div>
+                  <div className={styles.detailBox} style={{ gridColumn: '1/-1' }}>
+                    <div className={styles.detailLabel}>Core Beliefs Dominan</div>
+                    <div className={styles.detailValue} style={{ fontSize:'1rem' }}>{s.coreBeliefs}</div>
+                  </div>
+                </div>
+                {s.urgent && (
+                  <div className={styles.urgentNote}>
+                    ⚠️ Konseli ini menunjukkan risiko tinggi. Tindak lanjut segera diperlukan.
+                  </div>
+                )}
+                <div className={styles.detailActions}>
+                  <button className={styles.btnPrimary}><Eye size={15}/> Lihat Detail Lengkap</button>
+                  <button className={styles.btnSecondary}>Jadwalkan Sesi</button>
+                </div>
+              </div>
+            )}
           </div>
-          
-          <div style={{ marginTop: '24px', borderTop: '1px solid var(--border)', paddingTop: '20px' }}>
-            <h4 style={{ marginBottom: '12px' }}>Catatan Pra-Sesi Konselor</h4>
-            <textarea rows="4" style={{ width: '100%', padding: '12px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }} placeholder="Tulis catatan analisis awal untuk persiapan sesi CBT..."></textarea>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '12px' }}>
-              <button className="btn-primary">Simpan Catatan</button>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
