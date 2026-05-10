@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import styles from './login.module.css';
+import logoImg from '../logo-mindshield-transparent.png';
 
 export default function Login() {
   const router = useRouter();
@@ -31,7 +32,7 @@ export default function Login() {
         <div className={styles.header}>
           <div className={styles.logoContainer} style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
             <Image 
-              src="/logo-mindshield-transparent.png" 
+              src={logoImg} 
               alt="Mind Shield Logo" 
               width={80} 
               height={80} 
@@ -59,7 +60,7 @@ export default function Login() {
               value={role}
               onChange={(e) => setRole(e.target.value)}
             >
-              <option value="konseli">🧑 Konseli (Klien)</option>
+              <option value="konseli">👤 Konseli (Klien)</option>
               <option value="konselor">👨‍⚕️ Konselor</option>
               <option value="admin">🛡️ Admin Website</option>
             </select>
@@ -67,9 +68,9 @@ export default function Login() {
 
           {/* Badge preview role yang dipilih */}
           <div className={styles.roleBadge} data-role={role}>
-            {role === 'konseli' && '✔ Anda akan masuk sebagai Konseli (Klien CBT)'}
-            {role === 'konselor' && '✔ Anda akan masuk sebagai Konselor / Psikolog'}
-            {role === 'admin' && '✔ Anda akan masuk sebagai Admin Sistem'}
+            {role === 'konseli' && 'ℹ️ Anda akan masuk sebagai Konseli (Klien CBT)'}
+            {role === 'konselor' && 'ℹ️ Anda akan masuk sebagai Konselor / Psikolog'}
+            {role === 'admin' && 'ℹ️ Anda akan masuk sebagai Admin Sistem'}
           </div>
           
           <button
@@ -78,7 +79,7 @@ export default function Login() {
             disabled={loading}
             style={{ marginTop: '12px', padding: '14px', fontSize: '1rem', opacity: loading ? 0.7 : 1 }}
           >
-            {loading ? 'Masuk...' : 'Masuk ke Dashboard →'}
+            {loading ? 'Masuk...' : 'Masuk ke Dashboard ➡️'}
           </button>
         </form>
         
