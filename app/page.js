@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Shield } from 'lucide-react';
 import styles from './page.module.css';
+import logoImg from '../logo-mindshield-transparent.png';
+import heroImg from '../hero_image.png';
 
 export default function Home() {
   return (
@@ -10,7 +12,7 @@ export default function Home() {
       <nav className={styles.navbarWrapper}>
         <div className={styles.navbar}>
           <div className={styles.logo}>
-            <Image src="/logo-mindshield-transparent.png" alt="Mind Shield Logo" width={40} height={40} />
+            <Image src={logoImg} alt="Mind Shield Logo" width={40} height={40} />
             <span className={styles.brandName}>Mind Shield</span>
           </div>
           <div className={styles.navLinks}>
@@ -51,7 +53,7 @@ export default function Home() {
         <div className={`${styles.heroImageContainer} slide-up`}>
           <div className={styles.imageWrapper}>
             <Image 
-              src="/hero_image.png" 
+              src={heroImg} 
               alt="Ilustrasi Dukungan Mental Pelajar" 
               fill 
               style={{ objectFit: 'contain' }} 
