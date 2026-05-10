@@ -16,27 +16,6 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
-        <div style={{
-          position: 'fixed',
-          bottom: '20px',
-          left: '20px',
-          backgroundColor: 'rgba(255, 255, 255, 0.9)',
-          padding: '8px 16px',
-          borderRadius: '9999px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-          fontSize: '12px',
-          fontFamily: 'var(--font-main, sans-serif)',
-          color: '#4b5563',
-          zIndex: 900,
-          backdropFilter: 'blur(4px)',
-          border: '1px solid rgba(229, 231, 235, 0.5)',
-          maxWidth: 'calc(100vw - 100px)',
-          whiteSpace: 'nowrap',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis'
-        }}>
-          Made with Love ❤️ by <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer" style={{color: '#1a56db', fontWeight: '600', textDecoration: 'none'}}>alfajri</a>
-        </div>
       </body>
     </html>
   );
