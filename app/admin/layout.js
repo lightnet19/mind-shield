@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../konseli/layout.module.css';
 import logoImg from '../../logo-mindshield-transparent.png';
-import { Home, Shield, Users, Database, Activity, LogOut, Menu, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Home, Shield, Users, Database, Activity, LogOut, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function AdminLayout({ children }) {
   const [open, setOpen] = useState(false);
@@ -41,25 +41,29 @@ export default function AdminLayout({ children }) {
         </div>
 
         <nav className={styles.nav} onClick={() => setOpen(false)}>
-          <Link href="/admin/dashboard" className={styles.navItem} title={collapsed ? 'Dashboard Admin' : ''}>
+          <Link href="/admin/dashboard" className={styles.navItem} title="Dashboard Admin">
             <Home size={20} /><span className={styles.navLabel}>Dashboard Admin</span>
           </Link>
-          <Link href="/admin/users" className={styles.navItem} title={collapsed ? 'Kelola Akun & Verifikasi' : ''}>
+          <Link href="/admin/users" className={styles.navItem} title="Kelola Akun & Verifikasi">
             <Users size={20} /><span className={styles.navLabel}>Kelola Akun & Verifikasi</span>
           </Link>
-          <Link href="/admin/jadwal" className={styles.navItem} title={collapsed ? 'Ketersediaan Sistem' : ''}>
+          <Link href="/admin/jadwal" className={styles.navItem} title="Ketersediaan Sistem">
             <Activity size={20} /><span className={styles.navLabel}>Ketersediaan Sistem</span>
           </Link>
-          <Link href="/admin/keamanan" className={styles.navItem} title={collapsed ? 'Privasi & Keamanan' : ''}>
+          <Link href="/admin/keamanan" className={styles.navItem} title="Privasi & Keamanan">
             <Shield size={20} /><span className={styles.navLabel}>Privasi & Keamanan</span>
           </Link>
-          <Link href="/admin/database" className={styles.navItem} title={collapsed ? 'Backup Data' : ''}>
+          <Link href="/admin/database" className={styles.navItem} title="Backup Data">
             <Database size={20} /><span className={styles.navLabel}>Backup Data</span>
           </Link>
         </nav>
 
         <div className={styles.sidebarFooter}>
-          <Link href="/login" className={styles.logoutBtn} title={collapsed ? 'Keluar (Admin)' : ''}>
+          <span className={styles.creditText}>
+            Made with Love ❤️ by{' '}
+            <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer">alfajri</a>
+          </span>
+          <Link href="/login" className={styles.logoutBtn} title="Keluar (Admin)">
             <LogOut size={20} /><span className={styles.logoutLabel}>Keluar (Admin)</span>
           </Link>
         </div>
