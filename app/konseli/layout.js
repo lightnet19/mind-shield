@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './layout.module.css';
 import logoImg from '../../logo-mindshield-transparent.png';
-import { Home, FileText, Calendar, Video, BookHeart, LogOut, Info, Menu, X } from 'lucide-react';
+import { Home, FileText, Calendar, Video, BookHeart, LogOut, Info, Menu, X, PenTool } from 'lucide-react';
+import Chatbot from '../components/Chatbot/Chatbot';
 
 export default function KonseliLayout({ children }) {
   const [open, setOpen] = useState(false);
@@ -52,6 +53,9 @@ export default function KonseliLayout({ children }) {
           <Link href="/konseli/sesi" className={styles.navItem}>
             <Video size={20} /> Sesi Online
           </Link>
+          <Link href="/konseli/penugasan" className={styles.navItem}>
+            <PenTool size={20} /> Penugasan Terapeutik
+          </Link>
         </nav>
 
         <div className={styles.sidebarFooter}>
@@ -64,6 +68,9 @@ export default function KonseliLayout({ children }) {
       <main className={styles.main}>
         {children}
       </main>
+
+      {/* Floating Chatbot Widget */}
+      <Chatbot />
     </div>
   );
 }
