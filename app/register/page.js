@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import styles from '../login/login.module.css';
 import s from '../shared.module.css';
 
@@ -19,7 +20,15 @@ export default function Register() {
     <div className={styles.container}>
       <div className={`card fade-in ${styles.loginCard}`} style={{maxWidth: 460}}>
         <div className={styles.header}>
-          <div className={styles.logo}>MS</div>
+          <div className={styles.logoContainer} style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+            <Image 
+              src="/logo-mindshield-transparent.png" 
+              alt="Mind Shield Logo" 
+              width={80} 
+              height={80} 
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
           <h2>Daftar Akun Konseli</h2>
           <p className={styles.textMuted}>Langkah pertama menuju perlindungan diri</p>
         </div>
