@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import styles from './login.module.css';
 
 export default function Login() {
@@ -28,7 +29,15 @@ export default function Login() {
     <div className={styles.container}>
       <div className={`card fade-in ${styles.loginCard}`}>
         <div className={styles.header}>
-          <div className={styles.logo}>MS</div>
+          <div className={styles.logoContainer} style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+            <Image 
+              src="/logo-mindshield-transparent.png" 
+              alt="Mind Shield Logo" 
+              width={80} 
+              height={80} 
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
           <h2>Selamat Datang Kembali</h2>
           <p className={styles.textMuted}>Masuk ke portal perlindungan mental Anda</p>
         </div>
