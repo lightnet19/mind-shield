@@ -5,11 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './layout.module.css';
 import logoImg from '../../logo-mindshield-transparent.png';
-import { Home, FileText, Calendar, Video, BookHeart, LogOut, Info, Menu, X, PenTool, ClipboardList } from 'lucide-react';
+import { Home, FileText, Calendar, Video, BookHeart, LogOut, Info, Menu, X, PenTool, ClipboardList, ChevronLeft, ChevronRight } from 'lucide-react';
 import Chatbot from '../components/Chatbot/Chatbot';
 
 export default function KonseliLayout({ children }) {
   const [open, setOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
     <div className={styles.layout}>
@@ -28,50 +29,53 @@ export default function KonseliLayout({ children }) {
       {open && <div className={`${styles.overlay} ${styles.overlayVisible}`} onClick={() => setOpen(false)} />}
 
       {/* Sidebar */}
-      <aside className={`${styles.sidebar} ${open ? styles.sidebarOpen : ''}`}>
+      <aside className={`${styles.sidebar} ${open ? styles.sidebarOpen : ''} ${collapsed ? styles.sidebarCollapsed : ''}`}>
         <div className={styles.sidebarHeader}>
           <div className={styles.logo} style={{ padding: 0, background: 'transparent' }}>
             <Image src={logoImg} alt="Mind Shield Logo" width={36} height={36} style={{ objectFit: 'contain' }} />
           </div>
           <span className={styles.brandName}>Mind Shield</span>
-          <button className={styles.hamburger} onClick={() => setOpen(false)}
-            style={{ marginLeft: 'auto', display: 'flex' }} aria-label="Tutup menu">
-            <X size={20} />
+          <button
+            className={styles.collapseBtn}
+            onClick={() => setCollapsed(!collapsed)}
+            aria-label={collapsed ? 'Perlebar sidebar' : 'Lipat sidebar'}
+          >
+            {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
           </button>
         </div>
 
         <nav className={styles.nav} onClick={() => setOpen(false)}>
-          <Link href="/konseli/dashboard" className={styles.navItem}>
-            <Home size={20} /> Dashboard
+          <Link href="/konseli/dashboard" className={styles.navItem} title={collapsed ? 'Dashboard' : ''}>
+            <Home size={20} /><span className={styles.navLabel}>Dashboard</span>
           </Link>
-          <Link href="/konseli/panduan" className={styles.navItem}>
-            <Info size={20} /> Panduan & Consent
+          <Link href="/konseli/panduan" className={styles.navItem} title={collapsed ? 'Panduan & Consent' : ''}>
+            <Info size={20} /><span className={styles.navLabel}>Panduan & Consent</span>
           </Link>
-          <Link href="/konseli/screening" className={styles.navItem}>
-            <FileText size={20} /> Screening CBT
+          <Link href="/konseli/screening" className={styles.navItem} title={collapsed ? 'Screening CBT' : ''}>
+            <FileText size={20} /><span className={styles.navLabel}>Screening CBT</span>
           </Link>
-          <Link href="/konseli/jadwal" className={styles.navItem}>
-            <Calendar size={20} /> Jadwal Konseling
+          <Link href="/konseli/jadwal" className={styles.navItem} title={collapsed ? 'Jadwal Konseling' : ''}>
+            <Calendar size={20} /><span className={styles.navLabel}>Jadwal Konseling</span>
           </Link>
-          <Link href="/konseli/sesi" className={styles.navItem}>
-            <Video size={20} /> Sesi Online
+          <Link href="/konseli/sesi" className={styles.navItem} title={collapsed ? 'Sesi Online' : ''}>
+            <Video size={20} /><span className={styles.navLabel}>Sesi Online</span>
           </Link>
-          <Link href="/konseli/penugasan" className={styles.navItem}>
-            <PenTool size={20} /> Penugasan Terapeutik
+          <Link href="/konseli/penugasan" className={styles.navItem} title={collapsed ? 'Penugasan Terapeutik' : ''}>
+            <PenTool size={20} /><span className={styles.navLabel}>Penugasan Terapeutik</span>
           </Link>
-          <Link href="/konseli/laporan" className={styles.navItem}>
-            <ClipboardList size={20} /> Laporan Konseling
+          <Link href="/konseli/laporan" className={styles.navItem} title={collapsed ? 'Laporan Konseling' : ''}>
+            <ClipboardList size={20} /><span className={styles.navLabel}>Laporan Konseling</span>
           </Link>
         </nav>
 
         <div className={styles.sidebarFooter}>
-          <Link href="/login" className={styles.logoutBtn}>
-            <LogOut size={20} /> Keluar
+          <Link href="/login" className={styles.logoutBtn} title={collapsed ? 'Keluar' : ''}>
+            <LogOut size={20} /><span className={styles.logoutLabel}>Keluar</span>
           </Link>
         </div>
       </aside>
 
-      <main className={styles.main}>
+      <main className={`${styles.main} ${collapsed ? styles.mainCollapsed : ''}`}>
         {children}
       </main>
 
