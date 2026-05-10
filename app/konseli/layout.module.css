@@ -27,7 +27,8 @@
 
 .sidebarCollapsed .brandName,
 .sidebarCollapsed .navLabel,
-.sidebarCollapsed .logoutLabel {
+.sidebarCollapsed .logoutLabel,
+.sidebarCollapsed .creditText {
   display: none;
 }
 
@@ -143,6 +144,30 @@
   padding: 12px 10px;
   border-top: 1px solid var(--border);
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Credit text inside sidebar footer */
+.creditText {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 4px 12px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+.creditText a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.creditText a:hover {
+  text-decoration: underline;
 }
 
 .logoutBtn {
@@ -232,23 +257,6 @@
   color: var(--primary);
 }
 
-/* Tooltip for collapsed nav items */
-.navItem[title]:hover::after {
-  content: attr(title);
-  position: absolute;
-  left: calc(100% + 8px);
-  top: 50%;
-  transform: translateY(-50%);
-  background: #1e293b;
-  color: white;
-  font-size: 0.8rem;
-  padding: 6px 10px;
-  border-radius: 6px;
-  white-space: nowrap;
-  z-index: 200;
-  pointer-events: none;
-}
-
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .sidebar {
@@ -280,5 +288,10 @@
 
   .collapseBtn {
     display: none;
+  }
+
+  /* Show credit text on mobile sidebar too */
+  .sidebarCollapsed .creditText {
+    display: block;
   }
 }
