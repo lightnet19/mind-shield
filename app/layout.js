@@ -1,33 +1,20 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Mind Shield - CBT Self-Defense',
-  description: 'Website Self Defense Berbasis Strategi Cognitive Behavioral Therapy untuk Mengurangi Tindakan Self-Injury',
+  title: 'Mind Shield — Konseling Online Berbasis CBT',
+  description: 'Website Self Defense Berbasis Strategi Cognitive Behavioral Therapy (CBT) untuk Mengurangi Tindakan Self-Injury. Ruang aman digital untuk membantu siswa mengenali pikiran negatif, mengelola emosi, dan memperoleh dukungan konseling secara aman.',
+  icons: { icon: '/logo-mindshield.png' },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="id">
-      <body>
-        {children}
-        <div style={{
-          position: 'fixed',
-          bottom: 0,
-          right: 0,
-          padding: '8px 16px',
-          background: 'rgba(255, 255, 255, 0.85)',
-          backdropFilter: 'blur(4px)',
-          borderTopLeftRadius: '12px',
-          borderTop: '1px solid var(--border)',
-          borderLeft: '1px solid var(--border)',
-          fontSize: '0.8rem',
-          color: 'var(--text-muted)',
-          zIndex: 9999,
-          boxShadow: '-2px -2px 10px rgba(0,0,0,0.03)'
-        }}>
-          Aplikasi ini buatan <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer" style={{color: 'var(--primary)', fontWeight: 600, textDecoration: 'none'}}>alfajri</a>
-        </div>
-      </body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
