@@ -18,7 +18,10 @@ export default function KonseliLayout({ children }) {
         <button className={styles.hamburger} onClick={() => setOpen(true)} aria-label="Buka menu">
           <Menu size={24} />
         </button>
-        <span className={styles.topbarBrand}>Mind Shield</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Image src={logoImg} alt="Logo" width={24} height={24} style={{ objectFit: 'contain' }} />
+          <span className={styles.topbarBrand}>Mind Shield</span>
+        </div>
       </div>
 
       {/* Overlay */}
