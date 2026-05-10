@@ -1,0 +1,28 @@
+.page{padding:2rem;max-width:900px}
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.title{font-size:1.75rem;font-weight:700;color:#1f2937;margin:0 0 .25rem}
+.subtitle{color:#6b7280;font-size:.95rem;margin:0}
+.btnAdd{display:inline-flex;align-items:center;gap:6px;background:#1a56db;color:#fff;padding:10px 18px;border-radius:10px;font-weight:600;font-size:.9rem;border:none;cursor:pointer;transition:.2s}
+.btnAdd:hover{background:#1e40af}
+.list{display:flex;flex-direction:column;gap:.875rem}
+.card{display:flex;align-items:center;gap:1.25rem;background:#fff;border-radius:14px;padding:1.125rem 1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid #f3f4f6;flex-wrap:wrap;transition:.2s}
+.cardCancelled{opacity:.55}
+.dateBox{display:flex;align-items:center;gap:.75rem;min-width:160px}
+.dateIcon{color:#1a56db}
+.dateText{font-size:.9rem;font-weight:600;color:#1f2937}
+.timeText{display:flex;align-items:center;gap:4px;font-size:.78rem;color:#9ca3af;margin-top:2px}
+.cardInfo{flex:1}
+.konseli{font-size:.95rem;font-weight:600;color:#1f2937}
+.sessionType{display:flex;align-items:center;gap:5px;font-size:.78rem;color:#6b7280;margin-top:3px}
+.badge{padding:4px 12px;border-radius:9999px;font-size:.75rem;font-weight:600;flex-shrink:0}
+.b_terjadwal{background:rgba(26,86,219,.1);color:#1a56db}
+.b_menunggu{background:rgba(245,158,11,.1);color:#d97706}
+.b_dikonfirmasi{background:rgba(14,159,110,.1);color:#0e9f6e}
+.b_dibatalkan{background:rgba(107,114,128,.1);color:#6b7280}
+.actions{display:flex;gap:.5rem;flex-shrink:0}
+.btnConfirm{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:9px;font-size:.82rem;font-weight:600;background:rgba(14,159,110,.1);color:#0e9f6e;border:none;cursor:pointer;transition:.2s}
+.btnConfirm:hover{background:#0e9f6e;color:#fff}
+.btnCancel{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:9px;font-size:.82rem;font-weight:600;background:rgba(239,68,68,.1);color:#ef4444;border:none;cursor:pointer;transition:.2s}
+.btnCancel:hover{background:#ef4444;color:#fff}
+.btnJoin{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:9px;font-size:.82rem;font-weight:600;background:#1a56db;color:#fff;border:none;cursor:pointer;transition:.2s}
+.btnJoin:hover{background:#1e40af}
