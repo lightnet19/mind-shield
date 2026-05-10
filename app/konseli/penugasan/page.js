@@ -120,6 +120,7 @@ export default function PenugasanTerapeutik() {
                   <span className={styles.stepBadge}>B</span>
                   <h2>Situasi yang Membuat Saya Tertekan</h2>
                 </div>
+                <p className={styles.sectionDesc}>Tuliskan satu kejadian yang membuatmu merasa sedih, marah, kecewa, takut, malu, cemas, kesepian, atau muncul dorongan menyakiti diri.</p>
                 <div className={styles.formGroup}>
                   <label>Apa yang terjadi? Di mana? Dengan siapa?</label>
                   <textarea rows="3" required></textarea>
@@ -180,9 +181,7 @@ export default function PenugasanTerapeutik() {
                 <p className={styles.sectionDesc}>Pilih tindakan aman yang akan kamu lakukan setelah mengisi latihan ini.</p>
                 
                 <div className={styles.formGroup}>
-                  <label>Rencana Aman Saya</label>
-                  <p style={{fontSize: '0.9rem', color: 'var(--text-muted)'}}>Saat saya merasa sangat tertekan, saya akan melakukan tiga tindakan aman berikut:</p>
-                  
+                  <label>Tindakan Aman Checklist</label>
                   <div className={styles.checkboxGroup}>
                     <label className={styles.checkboxLabel}><input type="checkbox" /> Pindah ke tempat yang lebih aman</label>
                     <label className={styles.checkboxLabel}><input type="checkbox" /> Menghubungi guru BK, konselor, orang tua/wali, atau orang dewasa tepercaya</label>
@@ -195,6 +194,16 @@ export default function PenugasanTerapeutik() {
                     <label className={styles.checkboxLabel}><input type="checkbox" /> Melakukan aktivitas ringan yang aman, seperti menggambar, berjalan ke ruang BK, atau duduk bersama keluarga</label>
                   </div>
                 </div>
+
+                <div className={styles.formGroup}>
+                  <label>Rencana Aman Saya</label>
+                  <p style={{fontSize: '0.9rem', color: 'var(--text-muted)'}}>Saat saya merasa sangat tertekan, saya akan melakukan tiga tindakan aman berikut:</p>
+                  <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '8px'}}>
+                    <input type="text" placeholder="1. " className={styles.inputItem} required />
+                    <input type="text" placeholder="2. " className={styles.inputItem} required />
+                    <input type="text" placeholder="3. " className={styles.inputItem} required />
+                  </div>
+                </div>
               </div>
 
               {/* Bagian E */}
@@ -203,6 +212,7 @@ export default function PenugasanTerapeutik() {
                   <span className={styles.stepBadge}>E</span>
                   <h2>Refleksi Setelah Latihan</h2>
                 </div>
+                <p className={styles.sectionDesc}>Setelah menyelesaikan latihan ini, isi bagian berikut.</p>
                 <div className={styles.formGroup}>
                   <label>Bagaimana perasaanmu setelah mengisi latihan ini?</label>
                   <textarea rows="2" required></textarea>
