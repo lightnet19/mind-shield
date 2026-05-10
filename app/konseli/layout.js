@@ -48,9 +48,6 @@ export default function KonseliLayout({ children }) {
           <Link href="/konseli/sesi" className={styles.navItem}>
             <Video size={20} /> Sesi Online
           </Link>
-          <Link href="/konseli/jurnal" className={styles.navItem}>
-            <BookHeart size={20} /> Jurnal Perkembangan
-          </Link>
         </nav>
 
         <div className={styles.sidebarFooter}>
