@@ -1,0 +1,35 @@
+.page{padding:2rem;max-width:800px}
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.title{font-size:1.75rem;font-weight:700;color:#1f2937;margin:0 0 .25rem}
+.subtitle{color:#6b7280;font-size:.95rem;margin:0}
+.btnAdd{display:inline-flex;align-items:center;gap:6px;background:#1a56db;color:#fff;padding:10px 18px;border-radius:10px;font-weight:600;font-size:.9rem;border:none;cursor:pointer;transition:.2s}
+.btnAdd:hover{background:#1e40af}
+.successAlert{display:flex;align-items:center;gap:8px;background:rgba(14,159,110,.1);border:1px solid rgba(14,159,110,.25);color:#0e9f6e;padding:12px 16px;border-radius:12px;font-size:.875rem;font-weight:600;margin-bottom:1.5rem}
+.formCard{background:#fff;border-radius:16px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.06);border:1px solid #e5e7eb;margin-bottom:1.5rem}
+.formTitle{font-size:1rem;font-weight:700;color:#1f2937;margin:0 0 1.25rem}
+.form{display:flex;flex-direction:column;gap:1rem}
+.formGroup{display:flex;flex-direction:column;gap:.375rem}
+.label{font-size:.82rem;font-weight:600;color:#374151}
+.input{padding:10px 14px;border:1px solid #e5e7eb;border-radius:10px;font-size:.9rem;outline:none}
+.input:focus{border-color:#1a56db;box-shadow:0 0 0 3px rgba(26,86,219,.08)}
+.textarea{padding:10px 14px;border:1px solid #e5e7eb;border-radius:10px;font-size:.9rem;outline:none;resize:vertical;font-family:inherit}
+.textarea:focus{border-color:#1a56db}
+.formActions{display:flex;gap:.75rem}
+.btnSubmit{background:#1a56db;color:#fff;padding:10px 20px;border-radius:10px;font-weight:600;font-size:.9rem;border:none;cursor:pointer;transition:.2s}
+.btnSubmit:hover{background:#1e40af}
+.btnCancel{padding:10px 20px;border-radius:10px;font-weight:600;font-size:.9rem;border:1px solid #e5e7eb;background:#fff;cursor:pointer;color:#6b7280;transition:.2s}
+.btnCancel:hover{border-color:#1a56db;color:#1a56db}
+.sectionLabel{font-size:.85rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.875rem}
+.list{display:flex;flex-direction:column;gap:.875rem;margin-bottom:1.5rem}
+.card{display:flex;align-items:center;gap:1.25rem;background:#fff;border-radius:14px;padding:1.125rem 1.375rem;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid #f3f4f6;flex-wrap:wrap}
+.dateBlock{display:flex;align-items:center;gap:.75rem;min-width:200px}
+.calIcon{color:#1a56db;flex-shrink:0}
+.dateText{font-size:.9rem;font-weight:600;color:#1f2937}
+.timeText{display:flex;align-items:center;gap:4px;font-size:.78rem;color:#9ca3af;margin-top:2px}
+.cardInfo{flex:1}
+.konselorName{font-size:.9rem;font-weight:600;color:#1f2937}
+.sesiTag{display:flex;align-items:center;gap:5px;font-size:.78rem;color:#6b7280;margin-top:3px}
+.badge{padding:4px 12px;border-radius:9999px;font-size:.75rem;font-weight:600;flex-shrink:0}
+.btnJoin{display:inline-flex;align-items:center;gap:5px;background:#1a56db;color:#fff;padding:8px 16px;border-radius:9px;font-size:.82rem;font-weight:600;border:none;cursor:pointer;transition:.2s;flex-shrink:0}
+.btnJoin:hover{background:#1e40af}
+.infoNote{display:flex;align-items:center;gap:8px;background:#f9fafb;border-radius:12px;padding:1rem;font-size:.82rem;color:#6b7280;border:1px solid #f3f4f6}
