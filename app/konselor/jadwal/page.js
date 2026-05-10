@@ -1,63 +1,43 @@
-'use client';
-
-import { useState } from 'react';
-import s from '../../shared.module.css';
-
-const schedules = [
-  { konseli: 'Sarah M.', date: '16 Apr 2026', time: '14:00 - 15:00', topic: 'Restrukturisasi Kognitif', status: 'Dikonfirmasi' },
-  { konseli: 'Dika M.', date: '16 Apr 2026', time: '10:00 - 11:00', topic: 'Evaluasi Tugas Rumah', status: 'Dikonfirmasi' },
-  { konseli: 'Rina K.', date: '18 Apr 2026', time: '09:00 - 10:00', topic: 'Sesi Pertama - Asesmen', status: 'Menunggu' },
-  { konseli: 'Andi T.', date: '17 Apr 2026', time: '13:00 - 14:00', topic: 'Respons Krisis & Follow-Up', status: 'Menunggu' },
-];
+import { Calendar, Clock, Video, User } from 'lucide-react';
 
 export default function KonselorJadwal() {
-  const [statuses, setStatuses] = useState(schedules.map(sc => sc.status));
-
-  const confirm = (i) => {
-    const copy = [...statuses];
-    copy[i] = 'Dikonfirmasi';
-    setStatuses(copy);
-  };
-
   return (
     <div className="fade-in">
-      <h1 className={s.pageTitle}>Kelola Jadwal Sesi</h1>
-      <p className={s.pageDesc}>Konfirmasi atau atur ulang pengajuan jadwal dari konseli Anda.</p>
+      <div className="page-header">
+        <h1>Jadwal Sesi Konseling</h1>
+        <p>Kelola jadwal sesi tele-counseling Anda dengan para konseli.</p>
+      </div>
 
-      <div className="card">
-        <table className={s.table}>
-          <thead>
-            <tr>
-              <th>Konseli</th>
-              <th>Tanggal</th>
-              <th>Waktu</th>
-              <th>Topik Sesi</th>
-              <th>Status</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {schedules.map((sc, i) => (
-              <tr key={i}>
-                <td style={{fontWeight: 500}}>{sc.konseli}</td>
-                <td>{sc.date}</td>
-                <td><span className={s.scheduleTime}>{sc.time}</span></td>
-                <td>{sc.topic}</td>
-                <td><span className={`${s.badge} ${statuses[i] === 'Dikonfirmasi' ? s.badgeGreen : s.badgeYellow}`}>{statuses[i]}</span></td>
-                <td>
-                  {statuses[i] === 'Menunggu' ? (
-                    <div style={{display: 'flex', gap: 8}}>
-                      <button className="btn-primary" onClick={() => confirm(i)} style={{padding: '6px 14px', fontSize: '0.85rem'}}>Konfirmasi</button>
-                      <button className={s.btnSecondary} style={{padding: '6px 14px', fontSize: '0.85rem'}}>Tolak</button>
-                    </div>
-                  ) : (
-                    <span style={{color: 'var(--text-muted)', fontSize: '0.85rem'}}>✓ Terkonfirmasi</span>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="grid">
+        <div className="card" style={{ gridColumn: '1 / -1' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+            <h3>Jadwal Hari Ini</h3>
+            <button className="btn-outline" style={{ padding: '8px 16px', fontSize: '0.9rem' }}>Atur Ketersediaan Waktu</button>
+          </div>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', background: 'var(--background)', padding: '20px', borderRadius: 'var(--radius-md)', borderLeft: '4px solid var(--primary)' }}>
+            <div style={{ flex: 1 }}>
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>Sesi CBT Tahap 1 - Ahmad Maulana</h4>
+              <div style={{ display: 'flex', gap: '16px', color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '12px' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Clock size={16} /> 14:00 - 15:00 WIB</span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--alert)' }}>Status: Menunggu Sesi</span>
+              </div>
+              <button className="btn-primary" style={{ padding: '8px 16px', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Video size={16} /> Mulai Sesi Sekarang
+              </button>
+            </div>
+          </div>
+
+          <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', gap: '20px', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+            <div style={{ flex: 1 }}>
+              <h4 style={{ fontSize: '1.1rem', marginBottom: '8px', color: 'var(--text-muted)' }}>Sesi CBT Tahap 3 - Siti Nurhaliza</h4>
+              <div style={{ display: 'flex', gap: '16px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Clock size={16} /> 16:00 - 17:00 WIB</span>
+                <span>Telah Selesai</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

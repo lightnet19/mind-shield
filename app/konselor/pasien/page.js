@@ -1,60 +1,59 @@
-'use client';
+import { Users, FileEdit, Plus, Search } from 'lucide-react';
 
-import s from '../../shared.module.css';
-
-const patients = [
-  { name: 'Sarah M.', sesi: '2 / 6', status: 'Aktif', risk: 'Menengah', lastActivity: 'Jurnal: 12 Apr', thought: 'All-or-Nothing Thinking' },
-  { name: 'Andi T.', sesi: '1 / 6', status: 'Krisis', risk: 'Tinggi', lastActivity: 'Screening: 11 Apr', thought: 'Catastrophizing' },
-  { name: 'Dika M.', sesi: '3 / 6', status: 'Aktif', risk: 'Rendah', lastActivity: 'Sesi: 10 Apr', thought: 'Mind Reading' },
-  { name: 'Rina K.', sesi: '1 / 6', status: 'Menunggu', risk: 'Rendah', lastActivity: 'Screening: 13 Apr', thought: '-' },
-  { name: 'Lina S.', sesi: '5 / 6', status: 'Aktif', risk: 'Rendah', lastActivity: 'Jurnal: 9 Apr', thought: 'Overgeneralization' },
-  { name: 'Dewi R.', sesi: '6 / 6', status: 'Selesai', risk: 'Rendah', lastActivity: 'Evaluasi: 8 Apr', thought: '-' },
-];
-
-function statusBadge(st) {
-  if (st === 'Krisis') return `${s.badge} ${s.badgeRed}`;
-  if (st === 'Aktif') return `${s.badge} ${s.badgeGreen}`;
-  if (st === 'Menunggu') return `${s.badge} ${s.badgeYellow}`;
-  return `${s.badge} ${s.badgeGray}`;
-}
-
-export default function Pasien() {
+export default function DaftarPasien() {
   return (
     <div className="fade-in">
-      <h1 className={s.pageTitle}>Daftar Konseli</h1>
-      <p className={s.pageDesc}>Seluruh konseli yang sedang dalam proses terapi CBT bersama Anda.</p>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <h1>Daftar Konseli & Penugasan CBT</h1>
+          <p>Kelola data konseli dan berikan penugasan terapeutik.</p>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', background: 'white', border: '1px solid var(--border)', padding: '8px 16px', borderRadius: 'var(--radius-full)' }}>
+          <Search size={18} color="var(--text-muted)" style={{ marginRight: '8px' }} />
+          <input type="text" placeholder="Cari nama atau ID..." style={{ border: 'none', outline: 'none', background: 'transparent' }} />
+        </div>
+      </div>
 
-      <div className="card">
-        <table className={s.table}>
-          <thead>
-            <tr>
-              <th>Nama</th>
-              <th>Progres Sesi</th>
-              <th>Risiko</th>
-              <th>Distorsi Kognitif</th>
-              <th>Aktivitas Terakhir</th>
-              <th>Status</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {patients.map((p, i) => (
-              <tr key={i}>
-                <td style={{fontWeight: 500}}>{p.name}</td>
-                <td>{p.sesi}</td>
-                <td><span className={p.risk === 'Tinggi' ? `${s.badge} ${s.badgeRed}` : p.risk === 'Menengah' ? `${s.badge} ${s.badgeYellow}` : `${s.badge} ${s.badgeGreen}`}>{p.risk}</span></td>
-                <td style={{color: 'var(--text-muted)', fontSize: '0.9rem'}}>{p.thought}</td>
-                <td style={{fontSize: '0.9rem'}}>{p.lastActivity}</td>
-                <td><span className={statusBadge(p.status)}>{p.status}</span></td>
+      <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
+        <div style={{ overflowX: 'auto' }}>
+          <table className="screening-table" style={{ margin: '0' }}>
+            <thead>
+              <tr>
+                <th>Nama Konseli</th>
+                <th>Status Kasus</th>
+                <th>Progres CBT</th>
+                <th>Penugasan Aktif</th>
+                <th style={{ textAlign: 'center' }}>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
                 <td>
-                  <button className="btn-primary" style={{padding: '6px 14px', fontSize: '0.85rem'}}>
-                    Lihat Detail
-                  </button>
+                  <strong>Ahmad Maulana</strong><br />
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>KNSL-0921 | Kls 11 IPA 2</span>
+                </td>
+                <td><span style={{ background: '#FFF0F3', color: '#EF476F', padding: '4px 8px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: '600' }}>Risiko Tinggi</span></td>
+                <td>Sesi 1 (Identifikasi Masalah)</td>
+                <td>Jurnal Restrukturisasi Kognitif (Belum)</td>
+                <td style={{ textAlign: 'center' }}>
+                  <button className="btn-primary" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>Beri Tugas <Plus size={14} style={{ display: 'inline', marginLeft: '4px' }} /></button>
                 </td>
               </tr>
-            ))}
-          </tbody>
-        </table>
+              <tr>
+                <td>
+                  <strong>Siti Nurhaliza</strong><br />
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>KNSL-0922 | Kls 10 IPS 1</span>
+                </td>
+                <td><span style={{ background: '#F0FFF4', color: '#22A559', padding: '4px 8px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: '600' }}>Stabil</span></td>
+                <td>Sesi 3 (Behavioral Activation)</td>
+                <td>Latihan Relaksasi (Selesai)</td>
+                <td style={{ textAlign: 'center' }}>
+                  <button className="btn-outline" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>Review <FileEdit size={14} style={{ display: 'inline', marginLeft: '4px' }} /></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
