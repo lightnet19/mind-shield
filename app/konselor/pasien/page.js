@@ -1,59 +1,71 @@
-import { Users, FileEdit, Plus, Search } from 'lucide-react';
+'use client';
+import styles from './pasien.module.css';
+import { Search, User, FileBarChart, Calendar, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import Link from 'next/link';
+
+const pasienList = [
+  { id:1, name:'Andi Pratama', age:17, school:'SMAN 1 Jember', sessions:3, lastSession:'8 Mei 2026', risk:'Sedang', status:'aktif' },
+  { id:2, name:'Budi Santoso', age:16, school:'SMAN 2 Jember', sessions:1, lastSession:'9 Mei 2026', risk:'Tinggi', status:'aktif' },
+  { id:3, name:'Dewi Ayu', age:15, school:'SMKN 1 Jember', sessions:0, lastSession:'—', risk:'Tinggi', status:'baru' },
+  { id:4, name:'Rina Lestari', age:17, school:'SMAN 3 Jember', sessions:5, lastSession:'5 Mei 2026', risk:'Rendah', status:'selesai' },
+  { id:5, name:'Fajar Maulana', age:16, school:'MAN Jember', sessions:2, lastSession:'7 Mei 2026', risk:'Sedang', status:'aktif' },
+];
+
+const riskColor = { Tinggi:'#ef4444', Sedang:'#f59e0b', Rendah:'#0e9f6e' };
+const riskBg = { Tinggi:'rgba(239,68,68,.1)', Sedang:'rgba(245,158,11,.1)', Rendah:'rgba(14,159,110,.1)' };
 
 export default function DaftarPasien() {
+  const [search, setSearch] = useState('');
+  const filtered = pasienList.filter(p =>
+    p.name.toLowerCase().includes(search.toLowerCase()) ||
+    p.school.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <div className="fade-in">
-      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+    <div className={styles.page}>
+      <div className={styles.header}>
         <div>
-          <h1>Daftar Konseli & Penugasan CBT</h1>
-          <p>Kelola data konseli dan berikan penugasan terapeutik.</p>
+          <h1 className={styles.title}>Daftar Konseli</h1>
+          <p className={styles.subtitle}>Kelola dan pantau perkembangan seluruh konseli Anda.</p>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', background: 'white', border: '1px solid var(--border)', padding: '8px 16px', borderRadius: 'var(--radius-full)' }}>
-          <Search size={18} color="var(--text-muted)" style={{ marginRight: '8px' }} />
-          <input type="text" placeholder="Cari nama atau ID..." style={{ border: 'none', outline: 'none', background: 'transparent' }} />
-        </div>
+        <div className={styles.countChip}>{pasienList.length} konseli terdaftar</div>
       </div>
 
-      <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
-        <div style={{ overflowX: 'auto' }}>
-          <table className="screening-table" style={{ margin: '0' }}>
-            <thead>
-              <tr>
-                <th>Nama Konseli</th>
-                <th>Status Kasus</th>
-                <th>Progres CBT</th>
-                <th>Penugasan Aktif</th>
-                <th style={{ textAlign: 'center' }}>Aksi</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <strong>Ahmad Maulana</strong><br />
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>KNSL-0921 | Kls 11 IPA 2</span>
-                </td>
-                <td><span style={{ background: '#FFF0F3', color: '#EF476F', padding: '4px 8px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: '600' }}>Risiko Tinggi</span></td>
-                <td>Sesi 1 (Identifikasi Masalah)</td>
-                <td>Jurnal Restrukturisasi Kognitif (Belum)</td>
-                <td style={{ textAlign: 'center' }}>
-                  <button className="btn-primary" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>Beri Tugas <Plus size={14} style={{ display: 'inline', marginLeft: '4px' }} /></button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>Siti Nurhaliza</strong><br />
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>KNSL-0922 | Kls 10 IPS 1</span>
-                </td>
-                <td><span style={{ background: '#F0FFF4', color: '#22A559', padding: '4px 8px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: '600' }}>Stabil</span></td>
-                <td>Sesi 3 (Behavioral Activation)</td>
-                <td>Latihan Relaksasi (Selesai)</td>
-                <td style={{ textAlign: 'center' }}>
-                  <button className="btn-outline" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>Review <FileEdit size={14} style={{ display: 'inline', marginLeft: '4px' }} /></button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div className={styles.searchBox}>
+        <Search size={16} className={styles.searchIcon}/>
+        <input
+          className={styles.searchInput}
+          placeholder="Cari nama atau sekolah..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+        />
+      </div>
+
+      <div className={styles.list}>
+        {filtered.map(p => (
+          <div key={p.id} className={styles.card}>
+            <div className={styles.cardLeft}>
+              <div className={styles.avatar}>{p.name[0]}</div>
+              <div className={styles.info}>
+                <div className={styles.name}>{p.name}</div>
+                <div className={styles.meta}>{p.age} thn · {p.school}</div>
+              </div>
+            </div>
+            <div className={styles.cardMid}>
+              <div className={styles.stat}><Calendar size={13}/> {p.sessions} sesi</div>
+              <div className={styles.stat}>Terakhir: {p.lastSession}</div>
+            </div>
+            <div className={styles.cardRight}>
+              <span className={styles.riskBadge} style={{ background: riskBg[p.risk], color: riskColor[p.risk] }}>
+                Risiko {p.risk}
+              </span>
+              <span className={`${styles.statusBadge} ${styles['s_'+p.status]}`}>{p.status}</span>
+            </div>
+            <ChevronRight size={18} className={styles.arrow}/>
+          </div>
+        ))}
+        {filtered.length === 0 && <div className={styles.empty}>Tidak ada konseli ditemukan.</div>}
       </div>
     </div>
   );
