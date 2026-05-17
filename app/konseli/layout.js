@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './layout.module.css';
-import { Home, ClipboardList, BookOpen, MessageCircle, LogOut, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Home, ClipboardList, BookOpen, BookMarked, Brain, BarChart2, MessageCircle, LogOut, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function KonseliLayout({ children }) {
   const [open, setOpen] = useState(false);
@@ -50,16 +50,16 @@ export default function KonseliLayout({ children }) {
             <ClipboardList size={20} /><span className={styles.navLabel}>Penugasan Terapeutik</span>
           </Link>
           <Link href="/konseli/screening/pola-pikir" className={styles.navItem} title="Screening Pola Pikir">
-            <ClipboardList size={20} /><span className={styles.navLabel}>Screening Pola Pikir</span>
+            <Brain size={20} /><span className={styles.navLabel}>Screening Pola Pikir</span>
           </Link>
           <Link href="/konseli/evaluasi" className={styles.navItem} title="Evaluasi Konseling">
-            <ClipboardList size={20} /><span className={styles.navLabel}>Evaluasi Konseling</span>
+            <BarChart2 size={20} /><span className={styles.navLabel}>Evaluasi Konseling</span>
           </Link>
           <Link href="/konseli/materi" className={styles.navItem} title="Materi Edukasi">
             <BookOpen size={20} /><span className={styles.navLabel}>Materi Edukasi</span>
           </Link>
           <Link href="/konseli/tutorial" className={styles.navItem} title="Tutorial Penggunaan">
-            <BookOpen size={20} /><span className={styles.navLabel}>Tutorial</span>
+            <BookMarked size={20} /><span className={styles.navLabel}>Tutorial</span>
           </Link>
           <Link href="/konseli/chat" className={styles.navItem} title="Chatbot Pendukung">
             <MessageCircle size={20} /><span className={styles.navLabel}>Chatbot Pendukung</span>
@@ -67,13 +67,13 @@ export default function KonseliLayout({ children }) {
         </nav>
 
         <div className={styles.sidebarFooter}>
+          <Link href="/login" className={styles.logoutBtn} title="Keluar">
+            <LogOut size={20} /><span className={styles.logoutLabel}>Keluar</span>
+          </Link>
           <span className={styles.creditText}>
             Made with Love ❤️ by{' '}
             <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer">alfajri</a>
           </span>
-          <Link href="/login" className={styles.logoutBtn} title="Keluar">
-            <LogOut size={20} /><span className={styles.logoutLabel}>Keluar</span>
-          </Link>
         </div>
       </aside>
 

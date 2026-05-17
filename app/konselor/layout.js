@@ -67,13 +67,13 @@ export default function KonselorLayout({ children }) {
         </nav>
 
         <div className={styles.sidebarFooter}>
+          <Link href="/login" className={styles.logoutBtn} title="Keluar">
+            <LogOut size={20} /><span className={styles.logoutLabel}>Keluar</span>
+          </Link>
           <span className={styles.creditText}>
             Made with Love ❤️ by{' '}
             <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer">alfajri</a>
           </span>
-          <Link href="/login" className={styles.logoutBtn} title="Keluar">
-            <LogOut size={20} /><span className={styles.logoutLabel}>Keluar</span>
-          </Link>
         </div>
       </aside>
 
