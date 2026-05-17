@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, AlertTriangle, User, Send, CheckCircle } from 'lucide-react';
+import { Search, AlertTriangle, User, Send, CheckCircle, MessageCircle } from 'lucide-react';
 import styles from './pesan.module.css';
 
 // Mock data eskalasi pesan dari Chatbot
@@ -78,7 +78,7 @@ export default function PesanKonselor() {
   return (
     <div className="fade-in">
       <div className="page-header">
-        <h1>Pesan & Notifikasi Chatbot</h1>
+        <h1>Pesan &amp; Notifikasi Chatbot</h1>
         <p>Tangani eskalasi pesan dari konseli secara langsung</p>
       </div>
 
