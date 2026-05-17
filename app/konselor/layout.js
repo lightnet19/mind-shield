@@ -46,6 +46,9 @@ export default function KonselorLayout({ children }) {
           <Link href="/konselor/tinjau-screening" className={styles.navItem} title="Tinjau Screening Baru">
             <FileBarChart size={20} /><span className={styles.navLabel}>Tinjau Screening Baru</span>
           </Link>
+          <Link href="/konselor/tinjau-evaluasi" className={styles.navItem} title="Tinjau Evaluasi">
+            <FileBarChart size={20} /><span className={styles.navLabel}>Tinjau Evaluasi</span>
+          </Link>
           <Link href="/konselor/pasien" className={styles.navItem} title="Daftar Konseli">
             <Users size={20} /><span className={styles.navLabel}>Daftar Konseli</span>
           </Link>
