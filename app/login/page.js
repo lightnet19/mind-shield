@@ -5,30 +5,47 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import styles from './login.module.css';
-import { Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { User, Stethoscope, ShieldCheck, ArrowRight, LogIn } from 'lucide-react';
+
+const ROLES = [
+  {
+    id: 'konseli',
+    label: 'Konseli',
+    description: 'Saya ingin mendapatkan layanan konseling',
+    icon: User,
+    color: '#07689F',
+    path: '/konseli/dashboard',
+  },
+  {
+    id: 'konselor',
+    label: 'Konselor',
+    description: 'Saya adalah konselor / tenaga profesional',
+    icon: Stethoscope,
+    color: '#4F8A8B',
+    path: '/konselor/dashboard',
+  },
+  {
+    id: 'admin',
+    label: 'Admin',
+    description: 'Saya adalah administrator sistem',
+    icon: ShieldCheck,
+    color: '#6C3483',
+    path: '/admin/dashboard',
+  },
+];
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  const [selectedRole, setSelectedRole] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = () => {
+    if (!selectedRole) return;
     setLoading(true);
-
-    // Simulasi Login (Akan diganti dengan auth nyata)
+    const role = ROLES.find((r) => r.id === selectedRole);
     setTimeout(() => {
-      if (email === 'admin@mindshield.id') {
-        router.push('/admin/dashboard');
-      } else if (email === 'konselor@mindshield.id') {
-        router.push('/konselor/dashboard');
-      } else {
-        router.push('/konseli/dashboard');
-      }
-      setLoading(false);
-    }, 1500);
+      router.push(role.path);
+    }, 800);
   };
 
   return (
@@ -36,67 +53,71 @@ export default function LoginPage() {
       <div className={styles.loginCard}>
         <div className={styles.loginHeader}>
           <Link href="/">
-            <Image src="/logo-mindshield-transparent.png" alt="Logo" width={64} height={64} className={styles.logo} />
+            <Image
+              src="/logo-mindshield-transparent.png"
+              alt="Logo Mind Shield"
+              width={64}
+              height={64}
+              className={styles.logo}
+            />
           </Link>
           <h1>Selamat Datang</h1>
-          <p>Masuk untuk mengakses ruang aman Anda</p>
+          <p>Pilih peran Anda untuk melanjutkan</p>
         </div>
 
-        <form className={styles.loginForm} onSubmit={handleLogin}>
-          <div className={styles.inputGroup}>
-            <label htmlFor="email">Email</label>
-            <div className={styles.inputWrapper}>
-              <Mail className={styles.inputIcon} size={20} />
-              <input
-                type="email"
-                id="email"
-                placeholder="nama@sekolah.sch.id"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className={styles.inputGroup}>
-            <label htmlFor="password">Kata Sandi</label>
-            <div className={styles.inputWrapper}>
-              <Lock className={styles.inputIcon} size={20} />
-              <input
-                type={showPassword ? 'text' : 'password'}
-                id="password"
-                placeholder="••••••••"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+        <div className={styles.roleGrid}>
+          {ROLES.map((role) => {
+            const Icon = role.icon;
+            const isSelected = selectedRole === role.id;
+            return (
               <button
-                type="button"
-                className={styles.passwordToggle}
-                onClick={() => setShowPassword(!showPassword)}
+                key={role.id}
+                className={`${styles.roleCard} ${isSelected ? styles.roleCardActive : ''}`}
+                style={isSelected ? { '--role-color': role.color } : {}}
+                onClick={() => setSelectedRole(role.id)}
               >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                <div
+                  className={styles.roleIconWrap}
+                  style={{ backgroundColor: isSelected ? role.color : undefined }}
+                >
+                  <Icon size={28} color={isSelected ? '#fff' : role.color} />
+                </div>
+                <span className={styles.roleLabel}>{role.label}</span>
+                <span className={styles.roleDesc}>{role.description}</span>
+                {isSelected && <div className={styles.roleCheckmark}>✓</div>}
               </button>
-            </div>
-          </div>
+            );
+          })}
+        </div>
 
-          <div className={styles.forgotPassword}>
-            <Link href="/forgot-password">Lupa kata sandi?</Link>
-          </div>
-
-          <button type="submit" className={styles.loginButton} disabled={loading}>
-            {loading ? 'Memproses...' : 'Masuk Sekarang'}
-            {!loading && <ArrowRight size={20} />}
-          </button>
-        </form>
+        <button
+          className={styles.loginButton}
+          onClick={handleLogin}
+          disabled={!selectedRole || loading}
+        >
+          {loading ? (
+            <span className={styles.loadingDot} />
+          ) : (
+            <>
+              <LogIn size={20} />
+              Masuk Sekarang
+            </>
+          )}
+        </button>
 
         <div className={styles.loginFooter}>
-          <p>Belum punya akun? <Link href="/register">Daftar di sini</Link></p>
+          <p>
+            Belum punya akun?{' '}
+            <Link href="/register">Daftar di sini</Link>
+          </p>
         </div>
       </div>
-      
+
       <div className={styles.creditText}>
-        Made with Love ❤️ by <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer">alfajri</a>
+        Made with Love ❤️ by{' '}
+        <a href="https://alfajri.my.id/" target="_blank" rel="noopener noreferrer">
+          alfajri
+        </a>
       </div>
     </div>
   );
