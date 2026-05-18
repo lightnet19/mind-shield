@@ -1,4 +1,4 @@
-
+/* ===== LOGIN CONTAINER ===== */
 .loginContainer {
   min-height: 100vh;
   display: flex;
@@ -6,23 +6,25 @@
   align-items: center;
   justify-content: center;
   background-color: var(--background);
-  background-image: radial-gradient(circle at top right, rgba(79, 138, 139, 0.1), transparent 40%),
-                    radial-gradient(circle at bottom left, rgba(7, 104, 159, 0.05), transparent 40%);
+  background-image:
+    radial-gradient(circle at top right, rgba(79, 138, 139, 0.12), transparent 45%),
+    radial-gradient(circle at bottom left, rgba(7, 104, 159, 0.08), transparent 45%);
   padding: 20px;
 }
 
+/* ===== LOGIN CARD ===== */
 .loginCard {
   width: 100%;
-  max-width: 440px;
+  max-width: 460px;
   background-color: var(--surface);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
-  padding: 40px 32px;
+  padding: 40px 36px 32px;
   border: 1px solid var(--border);
   position: relative;
-  overflow: hidden;
 }
 
+/* ===== HEADER ===== */
 .loginHeader {
   text-align: center;
   margin-bottom: 32px;
@@ -31,12 +33,12 @@
 .logo {
   object-fit: contain;
   margin-bottom: 16px;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
 }
 
 .loginHeader h1 {
   font-size: 1.75rem;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--primary);
 }
 
@@ -45,90 +47,89 @@
   font-size: 0.95rem;
 }
 
-.loginForm {
+/* ===== ROLE SELECTION GRID ===== */
+.roleGrid {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
-.inputGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.inputGroup label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-main);
-}
-
-.inputWrapper {
+.roleCard {
   position: relative;
   display: flex;
   align-items: center;
-}
-
-.inputIcon {
-  position: absolute;
-  left: 14px;
-  color: #9ca3af;
-  pointer-events: none;
-}
-
-.inputWrapper input {
-  width: 100%;
-  padding: 12px 14px 12px 42px;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-md);
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.2s ease;
-  background-color: #f9fafb;
-}
-
-.inputWrapper input:focus {
-  border-color: var(--primary);
-  background-color: var(--surface);
-  box-shadow: 0 0 0 3px rgba(10, 77, 160, 0.1);
-}
-
-.passwordToggle {
-  position: absolute;
-  right: 14px;
-  background: none;
-  border: none;
-  color: #9ca3af;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--background);
   cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.roleCard:hover {
+  border-color: var(--primary);
+  background-color: rgba(7, 104, 159, 0.04);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(7, 104, 159, 0.1);
+}
+
+.roleCardActive {
+  border-color: var(--role-color, var(--primary));
+  background-color: rgba(7, 104, 159, 0.06);
+  box-shadow: 0 4px 16px rgba(7, 104, 159, 0.15);
+}
+
+.roleIconWrap {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: rgba(7, 104, 159, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px;
-  border-radius: 4px;
-  transition: color 0.2s;
+  transition: background-color 0.25s ease;
 }
 
-.passwordToggle:hover {
-  color: var(--primary);
+.roleLabel {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.2;
 }
 
-.forgotPassword {
-  text-align: right;
-  margin-top: -8px;
+.roleDesc {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  line-height: 1.4;
 }
 
-.forgotPassword a {
-  font-size: 0.85rem;
-  color: var(--primary);
-  font-weight: 500;
-  text-decoration: none;
+.roleCheckmark {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--role-color, var(--primary));
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.forgotPassword a:hover {
-  text-decoration: underline;
-}
-
+/* ===== LOGIN BUTTON ===== */
 .loginButton {
+  width: 100%;
   background: var(--gradient-cta);
   color: white;
   padding: 14px;
@@ -137,25 +138,40 @@
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 10px;
 }
 
-.loginButton:hover {
+.loginButton:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(34,165,89,0.3);
+  box-shadow: 0 6px 20px rgba(34, 165, 89, 0.3);
 }
 
 .loginButton:disabled {
-  opacity: 0.7;
+  opacity: 0.45;
   cursor: not-allowed;
   transform: none;
 }
 
+/* Loading dot animation */
+.loadingDot {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== FOOTER ===== */
 .loginFooter {
   margin-top: 24px;
   text-align: center;
@@ -173,8 +189,9 @@
   text-decoration: underline;
 }
 
+/* ===== CREDIT ===== */
 .creditText {
-  margin-top: 32px;
+  margin-top: 28px;
   font-size: 0.8rem;
   color: var(--text-muted);
   text-align: center;
