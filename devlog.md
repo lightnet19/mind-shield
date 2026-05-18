@@ -28,6 +28,34 @@ Untuk setiap sesi pengerjaan atau rilis fitur baru, gunakan format berikut:
 
 ## 🚀 Log Riwayat Perubahan (Change Log)
 
+### 2026-05-18 — Implementasi Informed Consent, Logika Deteksi Krisis ISAS, Flat File DB, & Fitur Umpan Balik
+- **Tujuan:** Menyelesaikan alur privasi informed consent, mengimplementasikan branching crisis response terintegrasi ISAS, mendesain mekanisme umpan balik interaktif dua arah antara konseli dan konselor, serta memigrasikan aset statis & implementasi flat-file db.
+- **Fase:** Fase 1 / Penyelesaian Prototype
+- **Perubahan Detail:**
+  - [x] **Aset Statis & Logo Fix:** Memindahkan `logo-mindshield-transparent.png` dan `hero_image.png` ke direktori `/public` dan memodifikasi `app/page.js` untuk mengatasi error 404 broken image.
+  - [x] **Flat-File JSON DB (`data/db.json` & `lib/db.js`):** Mengimplementasikan Server Actions untuk membaca/menulis data lokal dalam format JSON demi mendukung demonstrasi prototype mandiri tanpa ketergantungan relasional Supabase.
+  - [x] **Informed Consent Modal:** Menambahkan modal informed consent yang memblokir akses menu screening di `/konseli/screening/page.js` lengkap dengan checkbox persetujuan wajib dan CSS yang cantik.
+  - [x] **ISAS dengan Logika Deteksi Krisis:** Membangun instrumen ISAS bagian I & II interaktif, lengkap dengan kalkulator penskoran risiko (`frekuensi perilaku >= 3` atau `rata-rata fungsi >= 1.5`) yang otomatis mengarahkan ke halaman **Crisis Response** (daftar kontak darurat, safety plan) sebelum opsi bypass diizinkan.
+  - [x] **Halaman Umpan Balik Konseli:** Membuat halaman `/konseli/umpan-balik/page.js` dengan notifikasi unread, sistem card expand-collapse, serta formulir balasan pesan konselor.
+  - [x] **Halaman Kirim Umpan Balik Konselor:** Membuat halaman `/konselor/kirim-umpan-balik/page.js` lengkap dengan fitur pencarian konseli, filter tingkat risiko, klasifikasi jenis umpan balik, subjek, serta textarea isi pesan.
+  - [x] **Pembaruan Navigasi Sidebar:** Mengintegrasikan menu umpan balik ke dalam sidebar `KonseliLayout` dan `KonselorLayout` menggunakan ikon `MessageSquare` dari `lucide-react`.
+- **File Baru:**
+  - `app/konseli/screening/isas/isas.module.css` (Style instrumen ISAS & Crisis Response)
+  - `app/konseli/umpan-balik/page.js` (Halaman inbox umpan balik konseli)
+  - `app/konseli/umpan-balik/umpan-balik.module.css` (Style umpan balik konseli)
+  - `app/konselor/kirim-umpan-balik/page.js` (Halaman kirim umpan balik konselor)
+  - `app/konselor/kirim-umpan-balik/kirim-umpan-balik.module.css` (Style kirim umpan balik konselor)
+- **File Dimodifikasi:**
+  - `app/page.js` (Perbaikan path image logo & hero)
+  - `app/konseli/screening/page.js` (Penambahan logic modal Informed Consent & CSS locking)
+  - `app/konseli/screening/screening.module.css` (Penambahan CSS Modal & Declined State)
+  - `app/konseli/screening/isas/page.js` (Rewrite form ISAS + logic krisis)
+  - `app/konseli/layout.js` (Navigasi Umpan Balik Konseli)
+  - `app/konselor/layout.js` (Navigasi Kirim Umpan Balik Konselor)
+- **Catatan & Isu Terbuka:**
+  - Logika Crisis Response telah diuji secara lokal dan berfungsi dengan baik mendeteksi skor ekstrim ISAS.
+  - Semua pesan konselor dan respons balik tersimpan secara simulatif di `localStorage` & flat JSON untuk demonstrasi cepat.
+
 ### 2026-05-17 — Inisiasi Revisi v2.0 & Sinkronisasi Dokumen Baru
 - **Tujuan:** Membaca dokumen screening & evaluasi terbaru, merumuskan kembali PRD dan DevPlan agar selaras dengan kebutuhan baru klien.
 - **Fase:** Fase Persiapan / Pra-Fase 1
