@@ -49,7 +49,7 @@ export default function KonseliLayout({ children }) {
           <Link href="/konseli/penugasan" className={styles.navItem} title="Penugasan Terapeutik">
             <ClipboardList size={20} /><span className={styles.navLabel}>Penugasan Terapeutik</span>
           </Link>
-          <Link href="/konseli/screening/pola-pikir" className={styles.navItem} title="Screening Pola Pikir">
+          <Link href="/konseli/screening-pola-pikir" className={styles.navItem} title="Screening Pola Pikir">
             <Brain size={20} /><span className={styles.navLabel}>Screening Pola Pikir</span>
           </Link>
           <Link href="/konseli/evaluasi" className={styles.navItem} title="Evaluasi Konseling">
