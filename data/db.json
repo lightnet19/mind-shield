@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "name": "Budi Santoso",
+      "email": "budi@example.com",
+      "role": "konseli"
+    },
+    {
+      "id": "u2",
+      "name": "Dr. Siti Aminah",
+      "email": "siti@example.com",
+      "role": "konselor"
+    },
+    {
+      "id": "u3",
+      "name": "Admin System",
+      "email": "admin@example.com",
+      "role": "admin"
+    }
+  ],
+  "screening": [],
+  "evaluasi": [],
+  "chat": []
+}
