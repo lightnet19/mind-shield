@@ -15,6 +15,39 @@
 .stepInfo{flex:1}
 .stepTitle{font-size:.95rem;font-weight:700;color:#1f2937}
 .stepDesc{font-size:.78rem;color:#9ca3af;margin-top:3px;line-height:1.4}
+.consentNote{font-size:.75rem;color:#f59e0b;margin-top:4px;font-weight:500}
 .stepBadge{font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:9999px;flex-shrink:0}
 .chevron{color:#d1d5db;flex-shrink:0}
 .note{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:14px;padding:1.125rem 1.25rem;font-size:.875rem;color:#92400e;line-height:1.5}
+.consentBadge{display:inline-flex;align-items:center;gap:6px;background:rgba(14,159,110,.08);border:1px solid rgba(14,159,110,.2);border-radius:9999px;padding:4px 14px;font-size:.8rem;color:#065f46;font-weight:500;margin-bottom:1rem}
+
+/* Declined state */
+.declinedState{text-align:center;padding:4rem 2rem;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.declinedState h2{font-size:1.3rem;font-weight:700;color:#374151}
+.declinedState p{color:#6b7280;max-width:400px;line-height:1.6}
+.btnBack{display:inline-block;background:#1a56db;color:#fff;border-radius:10px;padding:10px 24px;font-weight:600;text-decoration:none;margin-top:.5rem}
+
+/* ====== Consent Modal ====== */
+.modalOverlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modalCard{background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.15);max-width:640px;width:100%;max-height:90vh;overflow-y:auto;animation:slideUp .3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.modalHeader{display:flex;flex-direction:column;align-items:center;gap:.75rem;padding:2rem 2rem 1.25rem;text-align:center;border-bottom:1px solid #f3f4f6}
+.modalHeader h2{font-size:1.25rem;font-weight:700;color:#1f2937;margin:0}
+.modalBody{padding:1.5rem 2rem}
+.modalIntro{color:#6b7280;font-size:.9rem;line-height:1.6;margin:0 0 1.25rem}
+.consentSection{margin-bottom:1.25rem}
+.consentSection h3{font-size:.9rem;font-weight:700;color:#374151;margin:0 0 .4rem}
+.consentSection p{font-size:.85rem;color:#6b7280;line-height:1.6;margin:0}
+.warningBox{display:flex;gap:.75rem;align-items:flex-start;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:.875rem 1rem}
+.warningBox p{margin:0;font-size:.82rem;color:#92400e;line-height:1.5}
+.consentCheck{display:flex;align-items:flex-start;gap:.75rem;margin-top:1.25rem;background:#f9fafb;border-radius:12px;padding:1rem;cursor:pointer;border:1.5px solid #e5e7eb;transition:border-color .2s}
+.consentCheck:has(input:checked){border-color:#0e9f6e;background:rgba(14,159,110,.04)}
+.consentCheck span{font-size:.85rem;color:#374151;line-height:1.5}
+.consentCheck input{margin-top:2px;flex-shrink:0;width:16px;height:16px;accent-color:#0e9f6e}
+.modalFooter{display:flex;gap:.75rem;padding:1.25rem 2rem 2rem;justify-content:flex-end}
+.btnDecline{display:flex;align-items:center;gap:.5rem;background:transparent;border:1.5px solid #e5e7eb;border-radius:10px;padding:10px 18px;font-size:.88rem;font-weight:600;color:#6b7280;cursor:pointer;transition:all .2s}
+.btnDecline:hover{background:#f9fafb;border-color:#d1d5db;color:#374151}
+.btnAccept{display:flex;align-items:center;gap:.5rem;background:#0e9f6e;border:none;border-radius:10px;padding:10px 22px;font-size:.88rem;font-weight:600;color:#fff;cursor:pointer;transition:all .2s}
+.btnAccept:disabled{background:#d1d5db;cursor:not-allowed}
+.btnAccept:not(:disabled):hover{background:#057a55}

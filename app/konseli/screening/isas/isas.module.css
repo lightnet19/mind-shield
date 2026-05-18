@@ -1,0 +1,211 @@
+/* === ISAS Screening Styles === */
+
+/* Section progress stepper */
+.sectionProgress {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 1.5rem;
+}
+.sectionStep {
+  padding: 6px 20px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: #f3f4f6;
+  color: #9ca3af;
+  transition: all 0.2s;
+}
+.sectionStep.active {
+  background: rgba(26, 86, 219, 0.12);
+  color: #1a56db;
+}
+.sectionLine {
+  flex: 1;
+  height: 2px;
+  background: #e5e7eb;
+  margin: 0 8px;
+}
+
+/* === Crisis Response Page === */
+.crisisPage {
+  min-height: 80vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+.crisisCard {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(220, 38, 38, 0.1);
+  border: 1.5px solid rgba(220, 38, 38, 0.2);
+  max-width: 680px;
+  width: 100%;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.crisisHeader {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.06), rgba(245, 158, 11, 0.06));
+  padding: 2rem 2rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(220, 38, 38, 0.1);
+}
+.crisisHeader h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #dc2626;
+  margin: 0.75rem 0 0.5rem;
+}
+.crisisHeader p {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.crisisBody {
+  padding: 1.5rem 2rem;
+}
+.crisisMessage {
+  background: rgba(254, 243, 199, 0.6);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #92400e;
+  line-height: 1.6;
+}
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.contactCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+.contactLabel {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1f2937;
+}
+.contactDesc {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+.safetyPlan {
+  background: rgba(26, 86, 219, 0.04);
+  border: 1px solid rgba(26, 86, 219, 0.12);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+.safetyPlan h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.75rem;
+}
+.safetyPlan ol {
+  padding-left: 1.5rem;
+  margin: 0;
+  color: #374151;
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+.crisisFooter {
+  padding: 1.25rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.btnDashboard {
+  display: block;
+  text-align: center;
+  background: #dc2626;
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btnDashboard:hover { background: #b91c1c; }
+.btnContinueAnyway {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 10px 24px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btnContinueAnyway:hover { background: #f9fafb; color: #374151; }
+
+/* === Result Card === */
+.resultCard {
+  max-width: 560px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border: 1px solid #f3f4f6;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.resultHeader {
+  margin-bottom: 1rem;
+}
+.resultIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+.resultHeader h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.5rem;
+}
+.resultHeader p {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin: 0;
+}
+.scoreRow {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+.resultNote {
+  font-size: 0.88rem;
+  color: #9ca3af;
+  margin: 1rem 0 1.5rem;
+  line-height: 1.6;
+}
+.resultActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}

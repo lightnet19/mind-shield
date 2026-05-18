@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../konseli/layout.module.css';
-import { Home, Users, FileBarChart, FileCheck2, Video, CalendarCheck, LogOut, Menu, ClipboardList, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Home, Users, FileBarChart, FileCheck2, Video, CalendarCheck, LogOut, Menu, ClipboardList, MessageCircle, MessageSquare, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function KonselorLayout({ children }) {
   const [open, setOpen] = useState(false);
@@ -60,6 +60,9 @@ export default function KonselorLayout({ children }) {
           </Link>
           <Link href="/konselor/pesan" className={styles.navItem} title="Pesan & Notifikasi">
             <MessageCircle size={20} /><span className={styles.navLabel}>Pesan & Notifikasi</span>
+          </Link>
+          <Link href="/konselor/kirim-umpan-balik" className={styles.navItem} title="Kirim Umpan Balik">
+            <MessageSquare size={20} /><span className={styles.navLabel}>Kirim Umpan Balik</span>
           </Link>
           <Link href="/konselor/sesi" className={styles.navItem} title="Ruang Konseling">
             <Video size={20} /><span className={styles.navLabel}>Ruang Konseling</span>

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './layout.module.css';
-import { Home, ClipboardList, BookOpen, BookMarked, Brain, BarChart2, MessageCircle, LogOut, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Home, ClipboardList, BookOpen, BookMarked, Brain, BarChart2, MessageCircle, MessageSquare, LogOut, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function KonseliLayout({ children }) {
   const [open, setOpen] = useState(false);
@@ -60,6 +60,9 @@ export default function KonseliLayout({ children }) {
           </Link>
           <Link href="/konseli/tutorial" className={styles.navItem} title="Tutorial Penggunaan">
             <BookMarked size={20} /><span className={styles.navLabel}>Tutorial</span>
+          </Link>
+          <Link href="/konseli/umpan-balik" className={styles.navItem} title="Umpan Balik Konselor">
+            <MessageSquare size={20} /><span className={styles.navLabel}>Umpan Balik</span>
           </Link>
           <Link href="/konseli/chat" className={styles.navItem} title="Chatbot Pendukung">
             <MessageCircle size={20} /><span className={styles.navLabel}>Chatbot Pendukung</span>

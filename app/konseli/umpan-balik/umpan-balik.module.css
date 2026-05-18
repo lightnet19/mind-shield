@@ -1,0 +1,225 @@
+/* Umpan Balik Page Styles */
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.badge {
+  background: #dc2626;
+  color: #fff;
+  border-radius: 9999px;
+  padding: 2px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.alertBanner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(26, 86, 219, 0.06);
+  border: 1px solid rgba(26, 86, 219, 0.2);
+  border-radius: 12px;
+  padding: 0.875rem 1.25rem;
+  font-size: 0.88rem;
+  color: #1e40af;
+  margin-bottom: 1.5rem;
+}
+
+.feedbackList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.feedbackCard {
+  background: #fff;
+  border-radius: 16px;
+  border: 1.5px solid #f3f4f6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.feedbackCard:hover {
+  border-color: #e5e7eb;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+}
+.feedbackCard.unread {
+  border-color: rgba(26, 86, 219, 0.3);
+  background: rgba(26, 86, 219, 0.015);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.125rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.avatarWrap { flex-shrink: 0; }
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerInfo { flex: 1; min-width: 0; }
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3px;
+}
+.senderName {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1f2937;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dateText {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+.subjectRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.subject {
+  font-size: 0.85rem;
+  color: #374151;
+  flex: 1;
+}
+.typeBadge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.expandIcon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.unreadDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1a56db;
+}
+
+/* Card body */
+.cardBody {
+  border-top: 1px solid #f3f4f6;
+  padding: 1.25rem;
+  animation: expand 0.2s ease;
+}
+@keyframes expand {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.messageText {
+  font-size: 0.88rem;
+  color: #374151;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  margin-bottom: 1rem;
+}
+
+.attachments {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.attachLabel {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  font-weight: 600;
+}
+.attachBtn {
+  background: rgba(26, 86, 219, 0.08);
+  border: 1px solid rgba(26, 86, 219, 0.2);
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  color: #1a56db;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.attachBtn:hover { background: rgba(26, 86, 219, 0.14); }
+
+.replySection { margin-top: 0.5rem; }
+.replyBox {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+.replyInput {
+  flex: 1;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.85rem;
+  color: #374151;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+.replyInput:focus { border-color: #1a56db; }
+.replyBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #1a56db;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.replyBtn:disabled { background: #d1d5db; cursor: not-allowed; }
+.replyBtn:not(:disabled):hover { background: #1e40af; }
+
+.replyConfirm {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #065f46;
+  background: rgba(14, 159, 110, 0.08);
+  border: 1px solid rgba(14, 159, 110, 0.2);
+  border-radius: 10px;
+  padding: 0.625rem 1rem;
+}
+
+.emptyNote {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  padding: 0.5rem 0;
+}
