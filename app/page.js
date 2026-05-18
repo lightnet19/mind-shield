@@ -2,8 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Shield, ArrowUp } from 'lucide-react';
 import styles from './page.module.css';
-import logoImg from '../logo-mindshield-transparent.png';
-import heroImg from '../hero_image.png';
+
 
 export default function Home() {
   return (
@@ -12,7 +11,7 @@ export default function Home() {
       <nav className={styles.navbarWrapper}>
         <div className={styles.navbar}>
           <div className={styles.logo}>
-            <Image src={logoImg} alt="Mind Shield Logo" width={40} height={40} />
+            <Image src="/logo-mindshield-transparent.png" alt="Mind Shield Logo" width={40} height={40} />
             <span className={styles.brandName}>Mind Shield</span>
           </div>
           <div className={styles.navLinks}>
@@ -54,7 +53,7 @@ export default function Home() {
         <div className={`${styles.heroImageContainer} slide-up`}>
           <div className={styles.imageWrapper}>
             <Image 
-              src={heroImg} 
+              src="/hero_image.png" 
               alt="Ilustrasi Dukungan Mental Pelajar" 
               fill 
               style={{ objectFit: 'contain' }} 
@@ -118,7 +117,7 @@ export default function Home() {
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
           <div className={styles.footerLogo}>
-            <Image src={logoImg} alt="Mind Shield Logo" width={32} height={32} />
+            <Image src="/logo-mindshield-transparent.png" alt="Mind Shield Logo" width={32} height={32} />
             <span className={styles.footerBrand}>Mind Shield</span>
           </div>
           <p className={styles.footerText}>
